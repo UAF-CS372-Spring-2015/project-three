@@ -1,12 +1,11 @@
-# I am a comment, and I want to say that the variable CC will be
-# the compiler to use.
 CC=clang++
-# Hey!, I am comment number 2. I want to say that CFLAGS will be the
-# options I'll pass to the compiler.
-CFLAGS=-lsfml-graphics -lsfml-window -lsfml-system
+CFLAGS=-lsfml-graphics -lsfml-window -lsfml-system -std=c++14
 
 all:
 	$(CC) $(CFLAGS) main.cpp -o the_platformer
 
+test:
+	$(CC) $(CFLAGS) test.cpp -o the_platformer_test
+
 clean:
-	rm the_platformer
+	rm the_platformer the_platformer_test
