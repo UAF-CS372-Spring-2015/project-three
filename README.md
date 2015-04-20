@@ -4,6 +4,8 @@
 [![Ongoing](https://badge.waffle.io/UAF-CS372-Spring-2015/the-platformer.svg?label=ongoing&title=Ongoing)](http://waffle.io/UAF-CS372-Spring-2015/the-platformer)
 [![Critical](https://badge.waffle.io/UAF-CS372-Spring-2015/the-platformer.svg?label=critical&title=Critical)](http://waffle.io/UAF-CS372-Spring-2015/the-platformer)
 
+# SFML
+
 This project will be using SFML:
 
 http://www.sfml-dev.org/
@@ -16,9 +18,19 @@ Then: `brew update && brew install sfml`
 
 If using Windows, download the binary from the main website.
 
-Compile with `clang++ -lsfml-graphics -lsfml-window -lsfml-system main.cpp`.
+# Building
+
+Compile with `clang++ -lsfml-graphics -lsfml-window -lsfml-system`.
+
+We also have a makefile, so you can just use `make` and build it.
 
 (If using other SFML modules, put them after graphics, before window and system)
+
+`main.cpp` is the release suite.
+
+`test.cpp` is the test/debug suite.
+
+# SFML Examples
 
 Some examples:
 
