@@ -1,5 +1,7 @@
 # The Platformer
 
+[![Join the chat at https://gitter.im/UAF-CS372-Spring-2015/the-platformer](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/UAF-CS372-Spring-2015/the-platformer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Pending](https://badge.waffle.io/UAF-CS372-Spring-2015/the-platformer.svg?label=pending/in-queue&title=Pending)](http://waffle.io/UAF-CS372-Spring-2015/the-platformer)
 [![Ongoing](https://badge.waffle.io/UAF-CS372-Spring-2015/the-platformer.svg?label=ongoing&title=Ongoing)](http://waffle.io/UAF-CS372-Spring-2015/the-platformer)
 [![Critical](https://badge.waffle.io/UAF-CS372-Spring-2015/the-platformer.svg?label=critical&title=Critical)](http://waffle.io/UAF-CS372-Spring-2015/the-platformer)
