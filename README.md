@@ -18,22 +18,38 @@ Then: `brew update && brew install sfml`
 
 If using Windows, download the binary from the main website.
 
-# Building
-
-Compile with `clang++ -lsfml-graphics -lsfml-window -lsfml-system`.
-
-We also have a makefile, so you can just use `make` and build it.
-
-(If using other SFML modules, put them after graphics, before window and system)
+# Files
 
 `main.cpp` is the release suite.
 
 `test.cpp` is the test/debug suite.
 
-# SFML Examples
+# Building
 
-Some examples:
+You can compile with: `clang++ -lsfml-graphics -lsfml-window -lsfml-system -std=c++14`.
 
-https://github.com/LaurentGomila/SFML/wiki/Tutorial:-Basic-Game-Engine
+(If using other SFML modules, put them after graphics, before window and system.)
+
+We also have a Makefile, which will build things automatically for you:
+
+`make` will build the release suite.
+
+`make test` will build the test suite.
+
+`make clean` will remove the executables.
+
+# Catch
+
+The test/debug suite uses Catch, a C++ unit-testing framework, which is cloned into this repo. Find it at: https://github.com/philsquared/Catch
+
+# SFML Examples/Tutorials
+
+Some cool SFML examples:
 
 https://github.com/jhpy1024/sfPong
+
+https://github.com/jhpy1024/sfSnake
+
+Tutorials can be found at:
+
+http://www.sfml-dev.org/tutorials/2.2/
