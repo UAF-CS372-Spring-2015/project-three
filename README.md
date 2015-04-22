@@ -6,7 +6,7 @@ Have questions/comments/concerns? Check Gitter:
 
 Have feature ideas or want to report progress? Check Waffle.io:
 
-[![Pending](https://badge.waffle.io/UAF-CS372-Spring-2015/the-platformer.svg?label=pending/in-queue&title=Pending)](http://waffle.io/UAF-CS372-Spring-2015/the-platformer)
+[![Pending](https://badge.waffle.io/UAF-CS372-Spring-2015/the-platformer.svg?label=pending&title=Pending)](http://waffle.io/UAF-CS372-Spring-2015/the-platformer)
 [![Ongoing](https://badge.waffle.io/UAF-CS372-Spring-2015/the-platformer.svg?label=ongoing&title=Ongoing)](http://waffle.io/UAF-CS372-Spring-2015/the-platformer)
 [![Critical](https://badge.waffle.io/UAF-CS372-Spring-2015/the-platformer.svg?label=critical&title=Critical)](http://waffle.io/UAF-CS372-Spring-2015/the-platformer)
 
