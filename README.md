@@ -46,7 +46,9 @@ We also have a Makefile, which will build things automatically for you:
 
 # Catch
 
-The test/debug suite uses Catch, a C++ unit-testing framework, which is cloned into this repo. Find it at: https://github.com/philsquared/Catch
+The test/debug suite uses Catch, a C++ unit-testing framework, which is a submodule of this repo. Find it at: https://github.com/philsquared/Catch.
+
+Because of this, make sure you clone this repo with `git clone --recursive`.
 
 # SFML Examples/Tutorials
 
