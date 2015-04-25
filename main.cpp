@@ -6,25 +6,35 @@
 // Testing commit
 
 #include <SFML/Graphics.hpp>
+#include "Game.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(2400, 1600), "SFML works!");
+    Game game;
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
-    while (window.isOpen())
+    while (game.window()->isOpen())
     {
         sf::Event event;
-        while (window.pollEvent(event))
+        while (game.window()->pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
+            switch (event.type)
+            {
+              case sf::Event::Closed:
+                game.window()->close();
+                break;
+              case sf::Event::KeyPressed:
+                if (event.key.code == sf::Keyboard::Escape)
+                  game.window()->close();
+
+                break;
+            }
         }
 
-        window.clear();
-        window.draw(shape);
-        window.display();
+        game.window()->clear();
+        game.window()->draw(shape);
+        game.window()->display();
     }
 
     return 0;

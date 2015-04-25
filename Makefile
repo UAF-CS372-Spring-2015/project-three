@@ -1,15 +1,15 @@
 CC=clang++
 CFLAGS=-lsfml-graphics -lsfml-window -lsfml-system -std=c++14 -Wall
 LDFLAGS=
-SOURCES=
+SOURCES=Game.cpp Player.cpp
 
 all: release
 
 release:
-	$(CC) $(CFLAGS) main.cpp $(SOURCES) -o the_platformer_test
+	$(CC) $(CFLAGS) main.cpp $(SOURCES) -o $@
 
 test:
-	$(CC) $(CFLAGS) test.cpp $(SOURCES) -o the_platformer
+	$(CC) $(CFLAGS) test.cpp $(SOURCES) -o $@
 
 clean:
-	rm the_platformer the_platformer_test
+	rm release test
