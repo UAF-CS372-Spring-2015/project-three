@@ -3,7 +3,7 @@ CFLAGS=-lsfml-graphics -lsfml-window -lsfml-system -std=c++14 -Wall
 LDFLAGS=
 # need to define this to be able to compile on Jacobs computer
 JACOBFLAGS=-I /usr/local/include -L /usr/local/lib
-SOURCES=ExitCommand.o Command.o GameInputHandler.o Game.cpp Player.cpp
+SOURCES=NullCommand.o ExitCommand.o Command.o GameInputHandler.o Game.cpp Player.cpp
 
 all: the_platformer
 
@@ -16,7 +16,10 @@ GameInputHandler.o: GameInputHandler.cpp
 Command.o: Command.cpp
 	$(CC) $(CFLAGS) -c $^
 
-ExitCommand.o: ExitCommand.cpp
+ExitCommand.o: Command.h ExitCommand.cpp
+	$(CC) $(CFLAGS) -c $^
+
+NullCommand.o: Command.h NullCommand.cpp
 	$(CC) $(CFLAGS) -c $^
 
 j:

@@ -14,7 +14,8 @@ shared_ptr<Command> GameInputHandler::handleInput(const sf::Event &event)
     case sf::Keyboard::Escape:
       return _exit;
       break;
+
   }
 
-  return NULL;
+  return _null;
 }
