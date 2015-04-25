@@ -1,8 +1,6 @@
 CC=clang++
-CFLAGS=-lsfml-graphics -lsfml-window -lsfml-system -std=c++14 -Wall
+CFLAGS=$(JFLAGS) -lsfml-graphics -lsfml-window -lsfml-system -std=c++14 -Wall
 LDFLAGS=
-# need to define this to be able to compile on Jacobs computer
-JACOBFLAGS=-I /usr/local/include -L /usr/local/lib
 SOURCES=MovePlayerCommand.o \
 				NullCommand.o \
 				ExitCommand.o \
@@ -30,12 +28,6 @@ NullCommand.o: commands/Command.h commands/NullCommand.h commands/NullCommand.cp
 
 MovePlayerCommand.o: commands/Command.h commands/MovePlayerCommand.h commands/MovePlayerCommand.cpp
 	$(CC) $(CFLAGS) -c $^
-
-j:
-	$(CC) $(JACOBFLAGS) $(CFLAGS) main.cpp $(SOURCES) -o $@
-j_test:
-	$(CC) $(JACOBFLAGS) $(CFLAGS) test.cpp $(SOURCES) -o $@
-
 
 test:
 	$(CC) $(CFLAGS) test.cpp $(SOURCES) -o $@
