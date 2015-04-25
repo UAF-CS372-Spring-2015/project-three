@@ -6,12 +6,13 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
+#include "Entity.h"
 
-class Player {
+class Player : public Entity {
 public:
 	Player();
 	unsigned int getLives();
-
+	virtual void draw() override;
 
 private:
 	unsigned int _lives;

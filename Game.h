@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include "GameInputHandler.h"
+#include "Player.h"
 
 
 class Game
@@ -20,6 +21,7 @@ private:
 
   std::shared_ptr<sf::RenderWindow> _window;
   GameInputHandler _gameInputHandler;
+  Player _player;
 };
 
 #endif

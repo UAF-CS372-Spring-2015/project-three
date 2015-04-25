@@ -5,6 +5,7 @@
 // Player.cpp
 
 #include "Player.h"
+#include <iostream>
 
 Player::Player():_lives(3)
 {}
@@ -15,3 +16,8 @@ unsigned int Player::getLives(){
 
 }
 
+void Player::draw() {
+
+	std::cout << "Drawing an object" << std::endl;
+
+}
