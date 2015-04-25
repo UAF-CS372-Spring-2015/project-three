@@ -5,19 +5,19 @@ LDFLAGS=
 JACOBFLAGS=-I /usr/local/include -L /usr/local/lib
 SOURCES=Game.cpp Player.cpp
 
-all: release
+all: the_platformer
 
-release:
+the_platformer:
 	$(CC) $(CFLAGS) main.cpp $(SOURCES) -o $@
 
 j:
-	$(CC) $(JACOBFLAGS) $(CFLAGS) main.cpp $(SOURCES) -o the_platformer_test
+	$(CC) $(JACOBFLAGS) $(CFLAGS) main.cpp $(SOURCES) -o $@
 j_test:
-	$(CC) $(JACOBFLAGS) $(CFLAGS) test.cpp $(SOURCES) -o the_platformer
+	$(CC) $(JACOBFLAGS) $(CFLAGS) test.cpp $(SOURCES) -o $@
 
 
 test:
 	$(CC) $(CFLAGS) test.cpp $(SOURCES) -o $@
 
 clean:
-	rm release test
+	rm the_platformer test
