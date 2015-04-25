@@ -3,6 +3,9 @@
 
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include "Command.h"
+#include "GameInputHandler.h"
+
 
 class Game
 {
@@ -11,8 +14,11 @@ public:
   Game();
 
   std::shared_ptr<sf::RenderWindow> window();
+  void exit();
+  std::shared_ptr<Command> handleGameInput(sf::Event &);
 private:
   std::shared_ptr<sf::RenderWindow> _window;
+  GameInputHandler _gameInputHandler;
 };
 
 #endif

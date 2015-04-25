@@ -6,11 +6,15 @@
 // Testing commit
 
 #include <SFML/Graphics.hpp>
+#include <memory>
+using std::make_shared;
+
 #include "Game.h"
 
 int main()
 {
     Game game;
+
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
@@ -22,11 +26,12 @@ int main()
             switch (event.type)
             {
               case sf::Event::Closed:
-                game.window()->close();
+                game.exit();
                 break;
               case sf::Event::KeyPressed:
-                if (event.key.code == sf::Keyboard::Escape)
-                  game.window()->close();
+                auto gameCommand = game.handleGameInput(event);
+                if (gameCommand)
+                  gameCommand->execute(game);
 
                 break;
             }
