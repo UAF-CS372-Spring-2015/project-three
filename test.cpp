@@ -7,8 +7,12 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch.hpp"
 #include <SFML/Graphics.hpp>
+#include "Player.h"
 
 TEST_CASE("Implement The Platformer", "Platformer")
 {
-    REQUIRE(0==0);
+	Player testPlayer;
+    REQUIRE(testPlayer.getLives() == 3);
+    REQUIRE(testPlayer.getLives() == 3);
+    
 }
