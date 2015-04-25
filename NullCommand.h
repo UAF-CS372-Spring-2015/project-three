@@ -6,7 +6,7 @@
 class NullCommand : public Command
 {
 public:
-  virtual void execute(Game &) override;
+  virtual void execute(Game &, const sf::Event &) override;
 };
 
 #endif

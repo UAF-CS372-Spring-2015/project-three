@@ -6,7 +6,8 @@
 class ExitCommand : public Command
 {
 public:
-  virtual void execute(Game &) override;
+
+  virtual void execute(Game &, const sf::Event &event) override;
 };
 
 #endif

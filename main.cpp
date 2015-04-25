@@ -30,7 +30,7 @@ int main()
                 break;
               case sf::Event::KeyPressed:
                 auto gameCommand = game.handleGameInput(event);
-                gameCommand->execute(game);
+                gameCommand->execute(game, event);
 
                 break;
             }

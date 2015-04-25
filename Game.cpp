@@ -1,5 +1,7 @@
 #include "Game.h"
 #include "ExitCommand.h"
+#include "MovePlayerCommand.h"
+
 #include <memory>
 using std::shared_ptr;
 using std::make_shared;
@@ -7,6 +9,7 @@ using std::make_shared;
 Game::Game(): _window(make_shared<sf::RenderWindow>(sf::VideoMode(500,500), "The Platformer")), _gameInputHandler()
 {
   _gameInputHandler.setExitCommand(make_shared<ExitCommand>());
+  _gameInputHandler.setMovePlayerCommand(make_shared<MovePlayerCommand>());
 }
 
 shared_ptr<Command> Game::handleGameInput(sf::Event &event)
