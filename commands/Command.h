@@ -3,13 +3,11 @@
 
 #include <SFML/Graphics.hpp>
 
-class Game;
-
 class Command
 {
 public:
   virtual ~Command() = default;
-  virtual void execute(Game &, const sf::Event &) = 0;
+  virtual void execute(const sf::Event &) = 0;
 private:
 };
 

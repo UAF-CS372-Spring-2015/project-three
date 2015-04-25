@@ -1,5 +1,5 @@
 #include "GameInputHandler.h"
-#include "ExitCommand.h"
+
 using std::shared_ptr;
 
 void GameInputHandler::setExitCommand(std::shared_ptr<Command> command)

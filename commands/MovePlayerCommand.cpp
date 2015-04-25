@@ -1,8 +1,7 @@
-#include "Game.h"
 #include "MovePlayerCommand.h"
 #include <iostream>
 
-void MovePlayerCommand::execute(Game & game, const sf::Event &event)
+void MovePlayerCommand::execute(const sf::Event &event)
 {
   switch(event.key.code)
   {

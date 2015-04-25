@@ -3,8 +3,10 @@
 
 #include <SFML/Window/Keyboard.hpp>
 #include <memory>
-#include "Command.h"
-#include "NullCommand.h"
+#include "commands/Command.h"
+#include "commands/NullCommand.h"
+#include "commands/ExitCommand.h"
+#include "commands/MovePlayerCommand.h"
 
 class Game;
 

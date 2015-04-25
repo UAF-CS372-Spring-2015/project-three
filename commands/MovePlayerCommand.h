@@ -6,7 +6,7 @@
 class MovePlayerCommand : public Command
 {
 public:
-  virtual void execute(Game &, const sf::Event &event) override;
+  virtual void execute(const sf::Event &event) override;
 };
 
 #endif

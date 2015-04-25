@@ -3,11 +3,15 @@
 
 #include "Command.h"
 
+class Game;
+
 class ExitCommand : public Command
 {
 public:
-
-  virtual void execute(Game &, const sf::Event &event) override;
+  ExitCommand(Game *);
+  virtual void execute(const sf::Event &event) override;
+private:
+  Game *_game;
 };
 
 #endif

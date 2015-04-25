@@ -14,6 +14,7 @@ using std::make_shared;
 int main()
 {
     Game game;
+    game.initializeCommands();
 
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
@@ -30,7 +31,7 @@ int main()
                 break;
               case sf::Event::KeyPressed:
                 auto gameCommand = game.handleGameInput(event);
-                gameCommand->execute(game, event);
+                gameCommand->execute(event);
 
                 break;
             }
