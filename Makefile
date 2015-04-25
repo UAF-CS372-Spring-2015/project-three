@@ -20,4 +20,4 @@ test:
 	$(CC) $(CFLAGS) test.cpp $(SOURCES) -o $@
 
 clean:
-	rm the_platformer test
+	rm the_platformer test j j_test
