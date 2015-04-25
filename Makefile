@@ -41,4 +41,4 @@ test:
 	$(CC) $(CFLAGS) test.cpp $(SOURCES) -o $@
 
 clean:
-	rm the_platformer test j j_test *.o commands/*.o commands/*.gch
+	rm the_platformer test j j_test *.o commands/*.gch
