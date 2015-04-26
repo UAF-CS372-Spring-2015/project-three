@@ -17,16 +17,16 @@ the_platformer: main.cpp $(SOURCES)
 GameInputHandler.o: GameInputHandler.cpp
 	$(CC) $(CFLAGS) -c $^
 
-Command.o: commands/Command.h commands/Command.cpp
+Command.o: commands/Command.cpp
 	$(CC) $(CFLAGS) -c $^
 
-ExitCommand.o: commands/Command.h commands/ExitCommand.h commands/ExitCommand.cpp
+ExitCommand.o: commands/ExitCommand.cpp
 	$(CC) $(CFLAGS) -c $^
 
-NullCommand.o: commands/Command.h commands/NullCommand.h commands/NullCommand.cpp
+NullCommand.o: commands/NullCommand.cpp
 	$(CC) $(CFLAGS) -c $^
 
-MovePlayerCommand.o: commands/Command.h commands/MovePlayerCommand.h commands/MovePlayerCommand.cpp
+MovePlayerCommand.o: commands/MovePlayerCommand.cpp
 	$(CC) $(CFLAGS) -c $^
 
 test:

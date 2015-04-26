@@ -52,13 +52,20 @@ void Game::handleEvents()
     switch (event.type)
     {
       case sf::Event::Closed:
+      {
         exit();
         break;
+      }
       case sf::Event::KeyPressed:
+      {
         auto gameCommand = _gameInputHandler.handleInput(event);
         gameCommand->execute(event);
         break;
-
+      }
+      default:
+      {
+        break;
+      }
     }
   }
 }
