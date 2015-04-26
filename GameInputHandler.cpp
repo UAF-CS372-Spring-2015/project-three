@@ -21,6 +21,11 @@ shared_ptr<Command> GameInputHandler::handleInput(const sf::Event &event)
       return _exit;
       break;
     }
+
+    case sf::Keyboard::Up:
+    case sf::Keyboard::Down:
+    case sf::Keyboard::Left:
+    case sf::Keyboard::Right:
     case sf::Keyboard::W:
     case sf::Keyboard::A:
     case sf::Keyboard::S:

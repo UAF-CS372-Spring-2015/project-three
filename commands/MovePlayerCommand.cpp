@@ -9,9 +9,10 @@ MovePlayerCommand::MovePlayerCommand(Player *player): _player(player)
 
 void MovePlayerCommand::execute(const sf::Event &event)
 {
-  auto distance = 10;
+  auto distance = 16;
   switch(event.key.code)
   {
+    case sf::Keyboard::Up:
     case sf::Keyboard::W:
     {
       _player->faceUp();
@@ -19,6 +20,7 @@ void MovePlayerCommand::execute(const sf::Event &event)
       std::cout << "Player moves up!" << std::endl;
       break;
     }
+    case sf::Keyboard::Left:
     case sf::Keyboard::A:
     {
       _player->faceLeft();
@@ -26,6 +28,7 @@ void MovePlayerCommand::execute(const sf::Event &event)
       std::cout << "Player moves left!" << std::endl;
       break;
     }
+    case sf::Keyboard::Down:
     case sf::Keyboard::S:
     {
       _player->faceDown();
@@ -33,6 +36,7 @@ void MovePlayerCommand::execute(const sf::Event &event)
       std::cout << "Player moves down!" << std::endl;
       break;
     }
+    case sf::Keyboard::Right:
     case sf::Keyboard::D:
     {
       _player->faceRight();
