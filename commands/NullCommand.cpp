@@ -1,6 +1,6 @@
 #include "NullCommand.h"
 
-void NullCommand::execute(const sf::Event &event)
+void NullCommand::execute(bool pressed, const sf::Event &event)
 {
 
 }

@@ -60,7 +60,13 @@ void Game::handleEvents()
       case sf::Event::KeyPressed:
       {
         auto gameCommand = _gameInputHandler.handleInput(event);
-        gameCommand->execute(event);
+        gameCommand->execute(true, event);
+        break;
+      }
+      case sf::Event::KeyReleased:
+      {
+        auto gameCommand = _gameInputHandler.handleInput(event);
+        gameCommand->execute(false, event);
         break;
       }
       default:

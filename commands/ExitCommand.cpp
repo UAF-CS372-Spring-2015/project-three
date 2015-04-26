@@ -6,7 +6,8 @@ ExitCommand::ExitCommand(Game * game)
   _game = game;
 }
 
-void ExitCommand::execute(const sf::Event &event)
+void ExitCommand::execute(bool pressed, const sf::Event &event)
 {
-  _game->exit();
+  if (pressed)
+    _game->exit();
 }

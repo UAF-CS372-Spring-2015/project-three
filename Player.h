@@ -19,18 +19,28 @@ public:
 	Player();
 	unsigned int getLives();
 	virtual void draw(std::shared_ptr<sf::RenderWindow>) override;
-
+	virtual sf::Vector2f getPosition() override;
+	virtual void setPosition(double, double) override;
 	void faceLeft();
 	void faceRight();
 	void faceUp();
 	void faceDown();
+	bool isFacingUp();
+	bool isFacingDown();
+	bool isFacingLeft();
+	bool isFacingRight();
+	bool isFacing(sf::IntRect);
 
+	sf::Vector2f getSpeed();
+	void setSpeed(double, double);
+	void updatePosition();
 private:
 	unsigned int _lives;
 
 	sf::IntRect _facing;
 	sf::Sprite _sprite;
 	sf::Texture _texture;
+	sf::Vector2f _speed;
 
 };
 

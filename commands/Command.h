@@ -7,7 +7,7 @@ class Command
 {
 public:
   virtual ~Command() = default;
-  virtual void execute(const sf::Event &) = 0;
+  virtual void execute(bool, const sf::Event &) = 0;
 private:
 };
 

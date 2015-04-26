@@ -9,7 +9,7 @@
 #include <memory>
 using std::shared_ptr;
 
-Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture()
+Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _speed(0.f,0.f)
 {
 	if (!_texture.loadFromFile("assets/mini_morphea_sprite_sheet_by_nyaneoneko-d5brzm5.png"))
 	{
@@ -18,6 +18,7 @@ Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture()
 	// _texture.setSmooth(true);
 	_sprite.setTexture(_texture);
 	_sprite.setOrigin(sf::Vector2f(16, 16));
+	_sprite.setScale(sf::Vector2f(4.f, 4.f));
 }
 
 unsigned int Player::getLives(){
@@ -28,8 +29,7 @@ unsigned int Player::getLives(){
 
 void Player::draw(shared_ptr<sf::RenderWindow> window) {
 	_sprite.setTextureRect(_facing);
-	_sprite.setPosition(getX(), getY());
-	_sprite.setScale(sf::Vector2f(4.f, 4.f));
+	updatePosition();
 	window->draw(_sprite);
 
 }
@@ -52,4 +52,57 @@ void Player::faceUp()
 void Player::faceDown()
 {
 	_facing = PLAYER_FACE_DOWN;
+}
+
+bool Player::isFacingUp()
+{
+	return isFacing(PLAYER_FACE_UP);
+}
+
+bool Player::isFacingDown()
+{
+	return isFacing(PLAYER_FACE_DOWN);
+}
+
+bool Player::isFacingLeft()
+{
+	return isFacing(PLAYER_FACE_LEFT);
+}
+
+bool Player::isFacingRight()
+{
+	return isFacing(PLAYER_FACE_RIGHT);
+}
+
+bool Player::isFacing(sf::IntRect dir)
+{
+	return _facing == dir;
+}
+
+sf::Vector2f Player::getPosition()
+{
+	return _sprite.getPosition();
+}
+
+void Player::setPosition(double x, double y)
+{
+	_sprite.setPosition(x, y);
+}
+
+sf::Vector2f Player::getSpeed()
+{
+	return _speed;
+}
+
+void Player::setSpeed(double x, double y)
+{
+	_speed.x = x;
+	_speed.y = y;
+}
+
+void Player::updatePosition()
+{
+	auto pos = getPosition() + getSpeed();
+
+	setPosition(pos.x, pos.y);
 }

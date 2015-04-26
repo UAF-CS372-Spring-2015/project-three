@@ -40,7 +40,7 @@ NullCommand.o: commands/NullCommand.cpp
 MovePlayerCommand.o: commands/MovePlayerCommand.cpp
 	$(CC) $(CFLAGS) -c $^
 
-test:
+test: test.cpp $(SOURCES)
 	$(CC) $(CFLAGS) test.cpp $(SOURCES) -o $@
 
 clean:

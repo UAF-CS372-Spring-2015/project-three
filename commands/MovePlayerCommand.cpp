@@ -1,47 +1,64 @@
 #include "MovePlayerCommand.h"
 #include "../Player.h"
 
-#include <iostream>
-
 MovePlayerCommand::MovePlayerCommand(Player *player): _player(player)
 {
 }
 
-void MovePlayerCommand::execute(const sf::Event &event)
+void MovePlayerCommand::execute(bool pressed, const sf::Event &event)
 {
-  auto distance = 16;
+  auto speed = 4.f;
   switch(event.key.code)
   {
     case sf::Keyboard::Up:
     case sf::Keyboard::W:
     {
-      _player->faceUp();
-      _player->setPosition(_player->getX(), _player->getY() - distance);
-      std::cout << "Player moves up!" << std::endl;
+      if (pressed)
+      {
+        _player->faceUp();
+        _player->setSpeed(0.f, -speed);
+      }
+      else if (_player->isFacingUp())
+        _player->setSpeed(0.f, 0.f);
+
       break;
     }
     case sf::Keyboard::Left:
     case sf::Keyboard::A:
     {
-      _player->faceLeft();
-      _player->setPosition(_player->getX() - distance, _player->getY());
-      std::cout << "Player moves left!" << std::endl;
+      if (pressed)
+      {
+        _player->faceLeft();
+        _player->setSpeed(-speed, 0.f);
+      }
+      else if (_player->isFacingLeft())
+        _player->setSpeed(0.f, 0.f);
       break;
     }
     case sf::Keyboard::Down:
     case sf::Keyboard::S:
     {
-      _player->faceDown();
-      _player->setPosition(_player->getX(), _player->getY() + distance);
-      std::cout << "Player moves down!" << std::endl;
+      if (pressed)
+      {
+        _player->faceDown();
+        _player->setSpeed(0.f, speed);
+      }
+      else if (_player->isFacingDown())
+        _player->setSpeed(0.f, 0.f);
+
       break;
     }
     case sf::Keyboard::Right:
     case sf::Keyboard::D:
     {
-      _player->faceRight();
-      _player->setPosition(_player->getX() + distance, _player->getY());
-      std::cout << "Player moves right!" << std::endl;
+      if (pressed)
+      {
+        _player->faceRight();
+        _player->setSpeed(speed, 0.f);
+      }
+      else if (_player->isFacingRight())
+        _player->setSpeed(0.f, 0.f);
+
       break;
     }
     default:

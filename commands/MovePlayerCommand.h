@@ -9,7 +9,7 @@ class MovePlayerCommand : public Command
 {
 public:
   MovePlayerCommand(Player *);
-  virtual void execute(const sf::Event &event) override;
+  virtual void execute(bool, const sf::Event &event) override;
 private:
   Player *_player;
 };

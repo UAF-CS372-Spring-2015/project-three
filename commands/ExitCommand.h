@@ -9,7 +9,7 @@ class ExitCommand : public Command
 {
 public:
   ExitCommand(Game *);
-  virtual void execute(const sf::Event &event) override;
+  virtual void execute(bool, const sf::Event &) override;
 private:
   Game *_game;
 };
