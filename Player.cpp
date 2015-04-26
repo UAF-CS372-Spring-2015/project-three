@@ -6,6 +6,8 @@
 
 #include "Player.h"
 #include <iostream>
+#include <memory>
+using std::shared_ptr;
 
 Player::Player():_lives(3)
 {}
@@ -16,8 +18,10 @@ unsigned int Player::getLives(){
 
 }
 
-void Player::draw() {
+void Player::draw(shared_ptr<sf::RenderWindow> window) {
+	sf::CircleShape shape(100.f);
+  shape.setFillColor(sf::Color::Green);
+	shape.setPosition(getX(), getY());
 
-	std::cout << "Drawing an object" << std::endl;
-
+	window->draw(shape);
 }

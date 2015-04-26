@@ -29,11 +29,9 @@ void Game::run()
 
 void Game::drawEntities()
 {
-  sf::CircleShape shape(100.f);
-  shape.setFillColor(sf::Color::Green);
-
   window()->clear();
-  window()->draw(shape);
+  _player.draw(window());
+  // window()->draw();
   window()->display();
 }
 
@@ -41,7 +39,7 @@ void Game::initializeCommands()
 {
   _gameInputHandler.setExitCommand(make_shared<ExitCommand>(this));
   // TODO: When we implement the player we should pass it to this command
-  _gameInputHandler.setMovePlayerCommand(make_shared<MovePlayerCommand>());
+  _gameInputHandler.setMovePlayerCommand(make_shared<MovePlayerCommand>(&_player));
 }
 
 void Game::handleEvents()

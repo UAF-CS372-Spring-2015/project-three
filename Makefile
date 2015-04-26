@@ -6,8 +6,9 @@ SOURCES=MovePlayerCommand.o \
 				ExitCommand.o \
 				Command.o \
 				GameInputHandler.o \
-				Game.cpp \
-				Player.cpp
+				Game.o \
+				Entity.o \
+				Player.o
 
 all: the_platformer
 
@@ -16,6 +17,16 @@ the_platformer: main.cpp $(SOURCES)
 
 GameInputHandler.o: GameInputHandler.cpp
 	$(CC) $(CFLAGS) -c $^
+
+Game.o: game.cpp
+	$(CC) $(CFLAGS) -c $^
+
+Entity.o: Entity.cpp
+	$(CC) $(CFLAGS) -c $^
+
+Player.o: Player.cpp
+	$(CC) $(CFLAGS) -c $^
+
 
 Command.o: commands/Command.cpp
 	$(CC) $(CFLAGS) -c $^

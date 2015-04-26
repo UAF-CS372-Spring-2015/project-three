@@ -7,12 +7,13 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Entity.h"
+#include <memory>
 
 class Player : public Entity {
 public:
 	Player();
 	unsigned int getLives();
-	virtual void draw() override;
+	virtual void draw(std::shared_ptr<sf::RenderWindow>) override;
 
 private:
 	unsigned int _lives;
