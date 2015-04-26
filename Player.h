@@ -9,15 +9,29 @@
 #include "Entity.h"
 #include <memory>
 
+#define PLAYER_FACE_DOWN sf::IntRect(0, 0, 32, 32)
+#define PLAYER_FACE_LEFT sf::IntRect(0, 33, 31, 31)
+#define PLAYER_FACE_RIGHT sf::IntRect(0, 65, 31, 31)
+#define PLAYER_FACE_UP sf::IntRect(0, 97, 31, 31)
+
 class Player : public Entity {
 public:
 	Player();
 	unsigned int getLives();
 	virtual void draw(std::shared_ptr<sf::RenderWindow>) override;
 
+	void faceLeft();
+	void faceRight();
+	void faceUp();
+	void faceDown();
+
 private:
 	unsigned int _lives;
-	sf::CircleShape _shape;
+
+	sf::IntRect _facing;
+	sf::Sprite _sprite;
+	sf::Texture _texture;
+
 };
 
 #endif // Player_H

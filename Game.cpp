@@ -5,8 +5,11 @@ using std::make_shared;
 
 #include "Game.h"
 
-Game::Game(): _window(make_shared<sf::RenderWindow>(sf::VideoMode(500,500), "The Platformer")), _gameInputHandler()
+Game::Game(): _window(make_shared<sf::RenderWindow>()), _gameInputHandler()
 {
+  // , "The Platformer", )
+  std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
+  _window->create(modes[0], "The Platformer");
 }
 
 bool Game::isRunning()
@@ -29,7 +32,7 @@ void Game::run()
 
 void Game::drawEntities()
 {
-  window()->clear();
+  window()->clear(sf::Color::Color(128,128,128));
   _player.draw(window());
   // window()->draw();
   window()->display();
