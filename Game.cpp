@@ -20,10 +20,10 @@ void Game::run()
 
   while (isRunning())
   {
-      handleGameInput();
+      handleEvents();
       drawEntities();
   }
-  
+
   exit();
 }
 
@@ -44,7 +44,7 @@ void Game::initializeCommands()
   _gameInputHandler.setMovePlayerCommand(make_shared<MovePlayerCommand>());
 }
 
-void Game::handleGameInput()
+void Game::handleEvents()
 {
   sf::Event event;
   while (window()->pollEvent(event))
