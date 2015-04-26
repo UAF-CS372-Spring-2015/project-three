@@ -1,3 +1,4 @@
+#include <SFML/Graphics.hpp>
 #include <memory>
 using std::shared_ptr;
 using std::make_shared;
@@ -8,6 +9,34 @@ Game::Game(): _window(make_shared<sf::RenderWindow>(sf::VideoMode(500,500), "The
 {
 }
 
+bool Game::isRunning()
+{
+  return window()->isOpen();
+}
+
+void Game::run()
+{
+  initializeCommands();
+
+  while (isRunning())
+  {
+      handleGameInput();
+      drawEntities();
+  }
+  
+  exit();
+}
+
+void Game::drawEntities()
+{
+  sf::CircleShape shape(100.f);
+  shape.setFillColor(sf::Color::Green);
+
+  window()->clear();
+  window()->draw(shape);
+  window()->display();
+}
+
 void Game::initializeCommands()
 {
   _gameInputHandler.setExitCommand(make_shared<ExitCommand>(this));
@@ -15,9 +44,23 @@ void Game::initializeCommands()
   _gameInputHandler.setMovePlayerCommand(make_shared<MovePlayerCommand>());
 }
 
-shared_ptr<Command> Game::handleGameInput(sf::Event &event)
+void Game::handleGameInput()
 {
-  return _gameInputHandler.handleInput(event);
+  sf::Event event;
+  while (window()->pollEvent(event))
+  {
+    switch (event.type)
+    {
+      case sf::Event::Closed:
+        exit();
+        break;
+      case sf::Event::KeyPressed:
+        auto gameCommand = _gameInputHandler.handleInput(event);
+        gameCommand->execute(event);
+        break;
+
+    }
+  }
 }
 
 shared_ptr<sf::RenderWindow> Game::window()

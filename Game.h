@@ -15,8 +15,11 @@ public:
 
   std::shared_ptr<sf::RenderWindow> window();
   void exit();
-  std::shared_ptr<Command> handleGameInput(sf::Event &);
+  void handleGameInput();
   void initializeCommands();
+  bool isRunning();
+  void run();
+  void drawEntities();
 private:
 
   std::shared_ptr<sf::RenderWindow> _window;
