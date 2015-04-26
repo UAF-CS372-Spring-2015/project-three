@@ -9,8 +9,9 @@
 #include <memory>
 using std::shared_ptr;
 
-Player::Player():_lives(3)
-{}
+Player::Player():_lives(3), _shape(100.f)
+{
+}
 
 unsigned int Player::getLives(){
 
@@ -19,9 +20,9 @@ unsigned int Player::getLives(){
 }
 
 void Player::draw(shared_ptr<sf::RenderWindow> window) {
-	sf::CircleShape shape(100.f);
-  shape.setFillColor(sf::Color::Green);
-	shape.setPosition(getX(), getY());
+	_shape.setFillColor(sf::Color::Green);
+	_shape.setPosition(getX(), getY());
 
-	window->draw(shape);
+	window->draw(_shape);
+
 }

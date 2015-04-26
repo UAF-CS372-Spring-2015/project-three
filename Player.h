@@ -17,7 +17,7 @@ public:
 
 private:
 	unsigned int _lives;
-
+	sf::CircleShape _shape;
 };
 
 #endif // Player_H
