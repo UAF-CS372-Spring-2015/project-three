@@ -27,9 +27,9 @@ unsigned int Player::getLives(){
 
 }
 
-void Player::draw(shared_ptr<sf::RenderWindow> window) {
+void Player::draw(shared_ptr<sf::RenderWindow> window, const float dt) {
 	_sprite.setTextureRect(_facing);
-	updatePosition();
+	updatePosition(dt);
 	window->draw(_sprite);
 
 }
@@ -100,9 +100,12 @@ void Player::setSpeed(double x, double y)
 	_speed.y = y;
 }
 
-void Player::updatePosition()
+void Player::updatePosition(const float dt)
 {
-	auto pos = getPosition() + getSpeed();
+	auto pos = getPosition();
+
+	pos.x += getSpeed().x * dt;
+	pos.y += getSpeed().y * dt;
 
 	setPosition(pos.x, pos.y);
 }

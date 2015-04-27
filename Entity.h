@@ -13,7 +13,7 @@
 class Entity {
 public:
 	virtual ~Entity() = default;
-	virtual void draw(std::shared_ptr<sf::RenderWindow>) = 0;
+	virtual void draw(std::shared_ptr<sf::RenderWindow>, const float) = 0;
 	virtual sf::Vector2f getPosition() = 0;
 	virtual void setPosition(double, double) = 0;
 private:

@@ -19,7 +19,7 @@ public:
   void initializeCommands();
   bool isRunning();
   void run();
-  void drawEntities();
+  void drawEntities(float);
 private:
 
   std::shared_ptr<sf::RenderWindow> _window;

@@ -7,7 +7,8 @@ MovePlayerCommand::MovePlayerCommand(Player *player): _player(player)
 
 void MovePlayerCommand::execute(bool pressed, const sf::Event &event)
 {
-  auto speed = 4.f;
+  // move at X pixels per second
+  auto speed = 500.f;
   switch(event.key.code)
   {
     case sf::Keyboard::Up:
