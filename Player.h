@@ -18,7 +18,7 @@ class Player : public Entity {
 public:
 	Player();
 	unsigned int getLives();
-	virtual void draw(std::shared_ptr<sf::RenderWindow>) override;
+	virtual void draw(std::shared_ptr<sf::RenderWindow>, const float) override;
 	virtual sf::Vector2f getPosition() override;
 	virtual void setPosition(double, double) override;
 	void faceLeft();
@@ -33,7 +33,7 @@ public:
 
 	sf::Vector2f getSpeed();
 	void setSpeed(double, double);
-	void updatePosition();
+	void updatePosition(const float);
 private:
 	unsigned int _lives;
 

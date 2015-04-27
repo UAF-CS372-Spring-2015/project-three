@@ -22,19 +22,26 @@ void Game::run()
 {
   initializeCommands();
 
+  // Keep track of the frametime
+  sf::Clock frametime;
+
   while (isRunning())
   {
+      // Get delta time for frame-rate depended movement
+      float dt = frametime.restart().asSeconds();
+
       handleEvents();
-      drawEntities();
+      drawEntities(dt);
   }
 
   exit();
 }
 
-void Game::drawEntities()
+void Game::drawEntities(float dt)
 {
+
   window()->clear(sf::Color::Color(128,128,128));
-  _player.draw(window());
+  _player.draw(window(), dt);
   // window()->draw();
   window()->display();
 }
