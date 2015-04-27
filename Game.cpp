@@ -10,6 +10,7 @@ Game::Game(): _window(make_shared<sf::RenderWindow>()), _gameInputHandler()
   // , "The Platformer", )
   std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
   _window->create(modes[0], "The Platformer");
+  _window->setFramerateLimit(60);
 }
 
 bool Game::isRunning()
