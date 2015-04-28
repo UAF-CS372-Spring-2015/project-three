@@ -24,7 +24,7 @@ Coin::Coin(): _sprite(), _texture(), _facing(COIN_FACE) {
 void Coin::draw(std::shared_ptr<sf::RenderWindow>){
 
 	_sprite.setTextureRect(_facing);
-	updatePosition();
+	//updatePosition();
 	window->draw(_sprite);
 
 }
