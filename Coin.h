@@ -9,7 +9,6 @@
 
 #include "Entity.h"
 #include <memory>
-#define COIN_FACE sf::IntRect(0, 97, 31, 31)
 
 class Coin : public Entity {
 public:
@@ -22,7 +21,6 @@ public:
 private:
 	sf::Sprite _sprite;
 	sf::Texture _texture;
-	sf::IntRect _facing;
 
 };
 

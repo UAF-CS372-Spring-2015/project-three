@@ -8,22 +8,21 @@
 #include <memory>
 #include <iostream>
 
-Coin::Coin(): _sprite(), _texture(), _facing(COIN_FACE) {
+Coin::Coin(): _sprite(), _texture() {
 
-	if (!_texture.loadFromFile("assets/mini_morphea_sprite_sheet_by_nyaneoneko-d5brzm5.png"))
+	if (!_texture.loadFromFile("assets/Coin1.png"))
 	{
     std::cout << "Error loading texture" << std::endl;
 	}
 	// _texture.setSmooth(true);
 	_sprite.setTexture(_texture);
-	_sprite.setOrigin(sf::Vector2f(16, 16));
-	_sprite.setScale(sf::Vector2f(4.f, 4.f));
+	_sprite.setOrigin(sf::Vector2f(7.5f, 7.5f));
+	_sprite.setScale(sf::Vector2f(1.5f, 1.5f));
 	_sprite.setPosition(400,400);
 }
 
 void Coin::draw(std::shared_ptr<sf::RenderWindow> window){
 
-	_sprite.setTextureRect(_facing);
 	window->draw(_sprite);
 
 }
