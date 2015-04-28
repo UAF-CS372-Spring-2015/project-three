@@ -17,10 +17,7 @@ TEST_CASE("Implement The Platformer", "Platformer")
 	Player testPlayer;
     REQUIRE(testPlayer.getLives() == 3);
 
-		auto speed = testPlayer.getSpeed();
-    REQUIRE(speed.x == Approx(16.f));
-		REQUIRE(speed.y == Approx(16.f));
-
+		//default speed is 0
 		auto pos = testPlayer.getPosition();
 		REQUIRE(pos.x == Approx(0.f));
 		REQUIRE(pos.y == Approx(0.f));
