@@ -21,7 +21,7 @@ Coin::Coin(): _sprite(), _texture() {
 	_sprite.setPosition(400,400);
 }
 
-void Coin::draw(std::shared_ptr<sf::RenderWindow> window){
+void Coin::draw(std::shared_ptr<sf::RenderWindow> window, float dt){
 
 	window->draw(_sprite);
 

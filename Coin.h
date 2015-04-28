@@ -5,7 +5,7 @@
 // Coin.h
 
 #ifndef __COIN_H__
-#define __COIN_H__ 
+#define __COIN_H__
 
 #include "Entity.h"
 #include <memory>
@@ -14,7 +14,7 @@ class Coin : public Entity {
 public:
 
 	Coin();
-	virtual void draw(std::shared_ptr<sf::RenderWindow>) override;
+	virtual void draw(std::shared_ptr<sf::RenderWindow>, float) override;
 	virtual sf::Vector2f getPosition() override;
 	virtual void setPosition(double, double) override;
 
@@ -27,5 +27,3 @@ private:
 
 
 #endif // __COIN_H__
-
-
