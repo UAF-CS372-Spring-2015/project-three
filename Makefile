@@ -40,6 +40,9 @@ NullCommand.o: commands/NullCommand.cpp
 MovePlayerCommand.o: commands/MovePlayerCommand.cpp
 	$(CC) $(CFLAGS) -c $^
 
+Coin.o: Coin.cpp
+	$(CC) $(CFLAGS) -c $^
+
 test: test.cpp $(SOURCES)
 	$(CC) $(CFLAGS) test.cpp $(SOURCES) -o $@
 
