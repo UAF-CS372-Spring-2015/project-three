@@ -24,10 +24,11 @@ public:
   void drawEntities();
 private:
 
+  Coin _coins;
   std::shared_ptr<sf::RenderWindow> _window;
   GameInputHandler _gameInputHandler;
   Player _player;
-  //Coin _coins;
+  
 };
 
 #endif

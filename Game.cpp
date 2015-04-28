@@ -35,7 +35,7 @@ void Game::drawEntities()
 {
   window()->clear(sf::Color::Color(128,128,128));
   _player.draw(window());
-  //_coins.draw(window());
+  _coins.draw(window());
   // window()->draw();
   window()->display();
 }

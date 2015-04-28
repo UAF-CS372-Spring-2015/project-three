@@ -8,7 +8,8 @@ SOURCES=MovePlayerCommand.o \
 				GameInputHandler.o \
 				Game.o \
 				Entity.o \
-				Player.o
+				Player.o \
+				Coin.o
 
 all: the_platformer
 

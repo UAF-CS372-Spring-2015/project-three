@@ -6,6 +6,7 @@
 
 #include "Coin.h"
 #include <memory>
+#include <iostream>
 
 Coin::Coin(): _sprite(), _texture(), _facing(COIN_FACE) {
 
@@ -13,18 +14,16 @@ Coin::Coin(): _sprite(), _texture(), _facing(COIN_FACE) {
 	{
     std::cout << "Error loading texture" << std::endl;
 	}
-
+	// _texture.setSmooth(true);
 	_sprite.setTexture(_texture);
 	_sprite.setOrigin(sf::Vector2f(16, 16));
 	_sprite.setScale(sf::Vector2f(4.f, 4.f));
-	//_sprite.setPosition(sf::Vector2f(400, 300));
-
+	_sprite.setPosition(400,400);
 }
 
-void Coin::draw(std::shared_ptr<sf::RenderWindow>){
+void Coin::draw(std::shared_ptr<sf::RenderWindow> window){
 
 	_sprite.setTextureRect(_facing);
-	//updatePosition();
 	window->draw(_sprite);
 
 }
