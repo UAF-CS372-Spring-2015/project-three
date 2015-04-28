@@ -8,7 +8,8 @@ SOURCES=MovePlayerCommand.o \
 				GameInputHandler.o \
 				Game.o \
 				Entity.o \
-				Player.o
+				Player.o \
+				Coin.o
 
 all: the_platformer
 
@@ -38,6 +39,9 @@ NullCommand.o: commands/NullCommand.cpp
 	$(CC) $(CFLAGS) -c $^
 
 MovePlayerCommand.o: commands/MovePlayerCommand.cpp
+	$(CC) $(CFLAGS) -c $^
+
+Coin.o: Coin.cpp
 	$(CC) $(CFLAGS) -c $^
 
 test: test.cpp $(SOURCES)

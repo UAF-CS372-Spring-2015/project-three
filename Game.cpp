@@ -42,6 +42,7 @@ void Game::drawEntities(float dt)
 
   window()->clear(sf::Color::Color(128,128,128));
   _player.draw(window(), dt);
+  _coins.draw(window());
   // window()->draw();
   window()->display();
 }

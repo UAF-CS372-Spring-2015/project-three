@@ -3,8 +3,10 @@
 
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include <vector>
 #include "GameInputHandler.h"
 #include "Player.h"
+#include "Coin.h"
 
 
 class Game
@@ -22,9 +24,11 @@ public:
   void drawEntities(float);
 private:
 
+  Coin _coins;
   std::shared_ptr<sf::RenderWindow> _window;
   GameInputHandler _gameInputHandler;
   Player _player;
+  
 };
 
 #endif

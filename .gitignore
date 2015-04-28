@@ -30,6 +30,7 @@
 # Mac stuff
 *.DS_Store
 the_platformer
+the_platformer_test
 test
 j
 j_test
