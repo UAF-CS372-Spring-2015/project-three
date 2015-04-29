@@ -10,7 +10,8 @@ SOURCES=MovePlayerCommand.o \
 				Entity.o \
 				Player.o \
 				Coin.o \
-				Room.o
+				Room.o \
+				EmptyRoom.o
 
 all: the_platformer
 
@@ -30,6 +31,9 @@ Player.o: Player.cpp
 	$(CC) $(CFLAGS) -c $^
 
 Room.o: Room.cpp
+	$(CC) $(CFLAGS) -c $^
+
+EmptyRoom.o: EmptyRoom.cpp
 	$(CC) $(CFLAGS) -c $^
 
 Command.o: commands/Command.cpp

@@ -7,7 +7,7 @@
 #include "GameInputHandler.h"
 #include "Player.h"
 #include "Coin.h"
-#include "Room.h"
+#include "EmptyRoom.h"
 
 
 class Game
@@ -30,7 +30,7 @@ private:
   GameInputHandler _gameInputHandler;
   std::shared_ptr<Player> _player;
 
-  Room _currentRoom;
+  std::shared_ptr<Room> _currentRoom;
 
 };
 

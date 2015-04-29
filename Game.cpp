@@ -15,10 +15,11 @@ Game::Game(): _window(make_shared<sf::RenderWindow>()), _gameInputHandler(), _pl
   auto size = window()->getSize();
   auto center = window()->getView().getCenter();
 
-  _currentRoom.setSize(size.x, size.y);
-  _currentRoom.setPosition(center.x, center.y);
-  _currentRoom.generateContent();
-  _currentRoom.spawn(_player, center);
+  _currentRoom = make_shared<EmptyRoom>();
+  _currentRoom->setSize(size.x, size.y);
+  _currentRoom->setPosition(center.x, center.y);
+  _currentRoom->generateContent();
+  _currentRoom->spawn(_player, center);
 }
 
 bool Game::isRunning()
@@ -50,7 +51,7 @@ void Game::drawEntities(float dt)
 
   window()->clear(sf::Color::Color(128,128,128));
 
-  _currentRoom.draw(window(), dt);
+  _currentRoom->draw(window(), dt);
 
   window()->display();
 }
