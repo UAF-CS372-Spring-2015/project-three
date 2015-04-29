@@ -1,6 +1,7 @@
 language:
     - cpp
 os:
+    - linux
     - osx
 compiler:
     - clang++
@@ -15,8 +16,7 @@ git:
 before_install:
     - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
     - git submodule update --init --recursive
-    - brew update
-    - brew install sfml
+    - sudo apt-get install libsfml-dev
 
 notifications:
     email: false
