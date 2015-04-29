@@ -1,5 +1,5 @@
 CC=clang++
-CFLAGS=$(JFLAGS) -lsfml-graphics -lsfml-window -lsfml-system -std=c++14 -Wall
+CFLAGS=$(JFLAGS) -lsfml-graphics -lsfml-window -lsfml-system -std=c++1y -Wall
 LDFLAGS=
 SOURCES=MovePlayerCommand.o \
 				NullCommand.o \
