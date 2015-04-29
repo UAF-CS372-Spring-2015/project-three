@@ -1,7 +1,9 @@
 language: cpp
-os: [osx, windows]
-compiler: [clang++, g++]
+os: [osx]
+compiler: [clang++]
 script: make
+
+before_install: [brew update, brew install sflm]
 
 # handle git submodules yourself
 git:
@@ -10,3 +12,6 @@ git:
 before_install:
     - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
     - git submodule update --init --recursive
+
+notifications:
+    email: false
