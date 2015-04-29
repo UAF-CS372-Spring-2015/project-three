@@ -5,12 +5,20 @@ using std::make_shared;
 
 #include "Game.h"
 
-Game::Game(): _window(make_shared<sf::RenderWindow>()), _gameInputHandler()
+Game::Game(): _window(make_shared<sf::RenderWindow>()), _gameInputHandler(), _currentRoom()
 {
   // , "The Platformer", )
   std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
   _window->create(modes[0], "The Platformer");
   _window->setFramerateLimit(60);
+
+  auto size = window()->getSize();
+  auto center = window()->getView().getCenter();
+
+  _player.setPosition(center.x, center.y);
+
+  _currentRoom.setSize(size.x - 100, size.y - 100);
+  _currentRoom.setPosition(center.x, center.y);
 }
 
 bool Game::isRunning()
@@ -41,9 +49,11 @@ void Game::drawEntities(float dt)
 {
 
   window()->clear(sf::Color::Color(128,128,128));
+
   _player.draw(window(), dt);
   _coins.draw(window(), dt);
-  // window()->draw();
+  _currentRoom.draw(window(), dt);
+
   window()->display();
 }
 

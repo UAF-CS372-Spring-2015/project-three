@@ -7,6 +7,7 @@
 #include "GameInputHandler.h"
 #include "Player.h"
 #include "Coin.h"
+#include "Room.h"
 
 
 class Game
@@ -28,7 +29,9 @@ private:
   std::shared_ptr<sf::RenderWindow> _window;
   GameInputHandler _gameInputHandler;
   Player _player;
-  
+
+  Room _currentRoom;
+
 };
 
 #endif
