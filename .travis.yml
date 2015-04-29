@@ -1,11 +1,16 @@
-language: cpp
-os: [osx]
-compiler: [clang++]
-script: make
+language:
+    - cpp
+os:
+    - osx
+compiler:
+    - clang++
+script:
+    - make
 
 # handle git submodules yourself
 git:
     submodules: false
+
 # use sed to replace the SSH URL with the public URL, then initialize submodules
 before_install:
     - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
