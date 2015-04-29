@@ -28,7 +28,7 @@ private:
   Coin _coins;
   std::shared_ptr<sf::RenderWindow> _window;
   GameInputHandler _gameInputHandler;
-  Player _player;
+  std::shared_ptr<Player> _player;
 
   Room _currentRoom;
 

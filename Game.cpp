@@ -5,7 +5,7 @@ using std::make_shared;
 
 #include "Game.h"
 
-Game::Game(): _window(make_shared<sf::RenderWindow>()), _gameInputHandler(), _currentRoom()
+Game::Game(): _window(make_shared<sf::RenderWindow>()), _gameInputHandler(), _player(make_shared<Player>()), _currentRoom()
 {
   // , "The Platformer", )
   std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
@@ -15,10 +15,10 @@ Game::Game(): _window(make_shared<sf::RenderWindow>()), _gameInputHandler(), _cu
   auto size = window()->getSize();
   auto center = window()->getView().getCenter();
 
-  _player.setPosition(center.x, center.y);
-
-  _currentRoom.setSize(size.x - 100, size.y - 100);
+  _currentRoom.setSize(size.x, size.y);
   _currentRoom.setPosition(center.x, center.y);
+  _currentRoom.generateContent();
+  _currentRoom.spawn(_player, center);
 }
 
 bool Game::isRunning()
@@ -50,8 +50,6 @@ void Game::drawEntities(float dt)
 
   window()->clear(sf::Color::Color(128,128,128));
 
-  _player.draw(window(), dt);
-  _coins.draw(window(), dt);
   _currentRoom.draw(window(), dt);
 
   window()->display();
@@ -60,8 +58,7 @@ void Game::drawEntities(float dt)
 void Game::initializeCommands()
 {
   _gameInputHandler.setExitCommand(make_shared<ExitCommand>(this));
-  // TODO: When we implement the player we should pass it to this command
-  _gameInputHandler.setMovePlayerCommand(make_shared<MovePlayerCommand>(&_player));
+  _gameInputHandler.setMovePlayerCommand(make_shared<MovePlayerCommand>(_player.get()));
 }
 
 void Game::handleEvents()
