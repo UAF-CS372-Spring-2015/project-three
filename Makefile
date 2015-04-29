@@ -28,7 +28,6 @@ Entity.o: Entity.cpp
 Player.o: Player.cpp
 	$(CC) $(CFLAGS) -c $^
 
-
 Command.o: commands/Command.cpp
 	$(CC) $(CFLAGS) -c $^
 
