@@ -1,3 +1,6 @@
 [submodule "Catch"]
 	path = src/Catch
 	url = git@github.com:philsquared/Catch.git
+[submodule "src/Catch"]
+	path = src/Catch
+	url = git@github.com:philsquared/Catch.git
