@@ -15,7 +15,7 @@ Game::Game(): _window(make_shared<sf::RenderWindow>()), _gameInputHandler(), _pl
   auto size = window()->getSize();
   auto center = window()->getView().getCenter();
 
-  _currentRoom = make_shared<EmptyRoom>();
+  _currentRoom = make_shared<CoinRoom>();
   _currentRoom->setSize(size.x, size.y);
   _currentRoom->setPosition(center.x, center.y);
   _currentRoom->generateContent();
