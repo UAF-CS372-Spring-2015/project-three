@@ -19,7 +19,7 @@ Game::Game(): _window(make_shared<sf::RenderWindow>()), _gameInputHandler(), _pl
   _currentRoom->setSize(size.x, size.y);
   _currentRoom->setPosition(center.x, center.y);
   _currentRoom->generateContent();
-  _currentRoom->spawn(_player, center);
+  _currentRoom->spawn(_player, _currentRoom->getCenter());
 }
 
 bool Game::isRunning()
