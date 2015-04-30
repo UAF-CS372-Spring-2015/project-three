@@ -1,5 +1,11 @@
-#ifndef __THEPLATFORMER_COMMAND_H__
-#define __THEPLATFORMER_COMMAND_H__
+// CS 372 Project 3
+// The Platformer
+// Noah Betzen, William Fisher, Jacob McKenna
+// Dylan Tucker, William Showalter, Saira Walia, Adam Walters
+// Command.h
+
+#ifndef COMMAND_H
+#define COMMAND_H
 
 #include <SFML/Graphics.hpp>
 

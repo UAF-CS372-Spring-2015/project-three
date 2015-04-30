@@ -1,5 +1,11 @@
-#ifndef __THEPLATFORMER_NULL_COMMAND
-#define __THEPLATFORMER_NULL_COMMAND
+// CS 372 Project 3
+// The Platformer
+// Noah Betzen, William Fisher, Jacob McKenna
+// Dylan Tucker, William Showalter, Saira Walia, Adam Walters
+// NullCommand.h
+
+#ifndef NULL_COMMAND
+#define NULL_COMMAND
 
 #include "Command.h"
 
