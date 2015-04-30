@@ -11,7 +11,10 @@ SOURCES=main.cpp \
 		commands/MovePlayerCommand.cpp \
 		Entity.cpp \
 		Player.cpp \
-		Coin.cpp
+		Coin.cpp \
+		Room.cpp \
+		EmptyRoom.cpp \
+		CoinRoom.cpp
 
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=the_platformer
