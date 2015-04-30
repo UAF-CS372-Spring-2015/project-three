@@ -67,4 +67,4 @@ http://www.sfml-dev.org/tutorials/2.2/
 Player sprite: http://nyaneoneko.deviantart.com/art/Mini-Morphea-Sprite-Sheet-322112525
 
 Some rights reserved. This work is licensed under a
-[Creative Commons Attribution-Noncommercial-No Derivative Works 3.0 License.](http://creativecommons.org/licenses/by-nc-nd/3.0/)
+[Creative Commons Attribution-Noncommercial-No Derivative Works 3.0 License](http://creativecommons.org/licenses/by-nc-nd/3.0/).

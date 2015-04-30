@@ -3,23 +3,23 @@ JACOBFLAGS=-I/usr/local/include
 CFLAGS=$(JACOBFLAGS) -c -std=c++14 -Wall 
 LDFLAGS=-L/usr/local/lib -lsfml-graphics -lsfml-window -lsfml-system
 
-GAMESOURCES=Game.cpp \
-			GameInputHandler.cpp \
-			commands/Command.cpp \
-			commands/NullCommand.cpp \
-			commands/ExitCommand.cpp \
-			commands/MovePlayerCommand.cpp \
-			Entity.cpp \
-			Player.cpp \
-			Coin.cpp \
-			Room.cpp \
-			EmptyRoom.cpp \
-			CoinRoom.cpp
+GAMESOURCES=src/Game.cpp \
+			src/GameInputHandler.cpp \
+			src/commands/Command.cpp \
+			src/commands/NullCommand.cpp \
+			src/commands/ExitCommand.cpp \
+			src/commands/MovePlayerCommand.cpp \
+			src/Entity.cpp \
+			src/Player.cpp \
+			src/Coin.cpp \
+			src/Room.cpp \
+			src/EmptyRoom.cpp \
+			src/CoinRoom.cpp
 
-MAINSOURCES=main.cpp \
+MAINSOURCES=src/main.cpp \
 			$(GAMESOURCES)
 
-TESTSOURCES=maintest.cpp \
+TESTSOURCES=src/maintest.cpp \
 			$(GAMESOURCES)
 
 MAINOBJECTS=$(MAINSOURCES:.cpp=.o)
@@ -47,4 +47,4 @@ $(TESTEXECUTABLE): $(TESTOBJECTS)
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm the_platformer the_platformer_test *.o commands/*.o
+	rm the_platformer the_platformer_test src/*.o src/commands/*.o
