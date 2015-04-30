@@ -1,50 +1,33 @@
 CC=clang++
-CFLAGS=$(JFLAGS) -lsfml-graphics -lsfml-window -lsfml-system -std=c++1y -Wall
-LDFLAGS=
-SOURCES=MovePlayerCommand.o \
-				NullCommand.o \
-				ExitCommand.o \
-				Command.o \
-				GameInputHandler.o \
-				Game.o \
-				Entity.o \
-				Player.o \
-				Coin.o
+JACOBFLAGS=-I/usr/local/include -L/usr/local/lib
+CFLAGS=$(JACOBFLAGS) -c -std=c++14 -Wall 
+LDFLAGS=-lsfml-graphics -lsfml-window -lsfml-system
+SOURCES=main.cpp \
+		Game.cpp \
+		GameInputHandler.cpp \
+		commands/Command.cpp \
+		commands/NullCommand.cpp \
+		commands/ExitCommand.cpp \
+		commands/MovePlayerCommand.cpp \
+		Entity.cpp \
+		Player.cpp \
+		Coin.cpp
 
-all: the_platformer
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=the_platformer
 
-the_platformer: main.cpp $(SOURCES)
-	$(CC) $(CFLAGS) main.cpp $(SOURCES) -o $@
+# tips on the makefile variables
+# $@	name of target
+# $<	name of first prerequisite
+# $^	name of all prerequisites
 
-GameInputHandler.o: GameInputHandler.cpp
-	$(CC) $(CFLAGS) -c $^
+all: $(SOURCES) $(EXECUTABLE)
 
-Game.o: game.cpp
-	$(CC) $(CFLAGS) -c $^
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
-Entity.o: Entity.cpp
-	$(CC) $(CFLAGS) -c $^
-
-Player.o: Player.cpp
-	$(CC) $(CFLAGS) -c $^
-
-Command.o: commands/Command.cpp
-	$(CC) $(CFLAGS) -c $^
-
-ExitCommand.o: commands/ExitCommand.cpp
-	$(CC) $(CFLAGS) -c $^
-
-NullCommand.o: commands/NullCommand.cpp
-	$(CC) $(CFLAGS) -c $^
-
-MovePlayerCommand.o: commands/MovePlayerCommand.cpp
-	$(CC) $(CFLAGS) -c $^
-
-Coin.o: Coin.cpp
-	$(CC) $(CFLAGS) -c $^
-
-test: test.cpp $(SOURCES)
-	$(CC) $(CFLAGS) test.cpp $(SOURCES) -o $@
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm the_platformer test j j_test *.o commands/*.gch
+	rm the_platformer test *.o commands/*.o
