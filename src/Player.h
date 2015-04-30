@@ -7,7 +7,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Entity.h"
-#include <memory>
+#include <memory> // for shared_ptr
 
 #define PLAYER_FACE_DOWN sf::IntRect(0, 0, 32, 32)
 #define PLAYER_FACE_LEFT sf::IntRect(0, 33, 31, 31)
@@ -44,4 +44,4 @@ private:
 
 };
 
-#endif // Player_H
+#endif

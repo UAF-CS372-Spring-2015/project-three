@@ -1,9 +1,15 @@
-#ifndef __THE_PLATFORMER_GAME_H__
-#define __THE_PLATFORMER_GAME_H__
+// CS 372 Project 3
+// The Platformer
+// Noah Betzen, William Fisher, Jacob McKenna
+// Dylan Tucker, William Showalter, Saira Walia, Adam Walters
+// Game.h
+
+#ifndef GAME_H
+#define GAME_H
 
 #include <SFML/Graphics.hpp>
-#include <memory>
-#include <vector>
+#include <memory> // for shared_ptr and make_shared
+#include <vector> // for vector
 #include "GameInputHandler.h"
 #include "Player.h"
 #include "Coin.h"
@@ -17,21 +23,23 @@ public:
   Game();
 
   std::shared_ptr<sf::RenderWindow> window();
-  void exit();
-  void handleEvents();
-  void initializeCommands();
-  bool isRunning();
   void run();
-  void drawEntities(float);
-private:
+  bool isRunning();
+  void exit();
 
-  Coin _coins;
+  void initializeCommands(); // TODO: Do we need this?
+  void handleEvents();
+  
+  void drawEntities(float dt);
+
+private:
   std::shared_ptr<sf::RenderWindow> _window;
-  GameInputHandler _gameInputHandler;
   std::shared_ptr<Player> _player;
 
   std::shared_ptr<Room> _currentRoom;
 
+  GameInputHandler _gameInputHandler;
+  std::vector<Coin> _coins;
 };
 
 #endif

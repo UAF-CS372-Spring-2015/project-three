@@ -4,8 +4,8 @@
 // Dylan Tucker, William Showalter, Saira Walia, Adam Walters
 // Coin.h
 
-#ifndef __COIN_H__
-#define __COIN_H__
+#ifndef COIN_H
+#define COIN_H
 
 #include "Entity.h"
 #include <memory>
@@ -24,6 +24,4 @@ private:
 
 };
 
-
-
-#endif // __COIN_H__
+#endif

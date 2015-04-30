@@ -3,7 +3,6 @@
 // Noah Betzen, William Fisher, Jacob McKenna
 // Dylan Tucker, William Showalter, Saira Walia, Adam Walters
 // main.cpp
-// Testing commit
 
 #include "Game.h"
 

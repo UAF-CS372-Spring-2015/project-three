@@ -1,5 +1,11 @@
-#ifndef __THEPLATFORMER_COIN_ROOM_H__
-#define __THEPLATFORMER_COIN_ROOM_H__
+// CS 372 Project 3
+// The Platformer
+// Noah Betzen, William Fisher, Jacob McKenna
+// Dylan Tucker, William Showalter, Saira Walia, Adam Walters
+// CoinRoom.h
+
+#ifndef COIN_ROOM_H
+#define COIN_ROOM_H
 
 #include "Room.h"
 

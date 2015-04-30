@@ -5,15 +5,14 @@
 // Player.cpp
 
 #include "Player.h"
-#include <iostream>
-#include <memory>
-using std::shared_ptr;
+#include <iostream> // for cout and endl
+#include <memory> // for shared_ptr and make_shared
 
 Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _speed(0.f,0.f)
 {
 	if (!_texture.loadFromFile("assets/mini_morphea_sprite_sheet_by_nyaneoneko-d5brzm5.png"))
 	{
-    std::cout << "Error loading texture" << std::endl;
+    	std::cout << "Error loading texture" << std::endl;
 	}
 	// _texture.setSmooth(true);
 	_sprite.setTexture(_texture);
@@ -27,7 +26,7 @@ unsigned int Player::getLives(){
 
 }
 
-void Player::draw(shared_ptr<sf::RenderWindow> window, const float dt) {
+void Player::draw(std::shared_ptr<sf::RenderWindow> window, const float dt) {
 	_sprite.setTextureRect(_facing);
 	updatePosition(dt);
 	window->draw(_sprite);

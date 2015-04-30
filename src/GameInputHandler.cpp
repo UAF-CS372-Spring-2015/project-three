@@ -1,6 +1,10 @@
-#include "GameInputHandler.h"
+// CS 372 Project 3
+// The Platformer
+// Noah Betzen, William Fisher, Jacob McKenna
+// Dylan Tucker, William Showalter, Saira Walia, Adam Walters
+// GameInputHandler.cpp
 
-using std::shared_ptr;
+#include "GameInputHandler.h"
 
 void GameInputHandler::setExitCommand(std::shared_ptr<Command> command)
 {
@@ -12,7 +16,7 @@ void GameInputHandler::setMovePlayerCommand(std::shared_ptr<Command> command)
   _movePlayer = command;
 }
 
-shared_ptr<Command> GameInputHandler::handleInput(const sf::Event &event)
+std::shared_ptr<Command> GameInputHandler::handleInput(const sf::Event &event)
 {
   switch(event.key.code)
   {

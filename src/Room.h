@@ -1,5 +1,11 @@
-#ifndef __THEPLATFORMER_ROOM_H
-#define __THEPLATFORMER_ROOM_H
+// CS 372 Project 3
+// The Platformer
+// Noah Betzen, William Fisher, Jacob McKenna
+// Dylan Tucker, William Showalter, Saira Walia, Adam Walters
+// Room.h
+
+#ifndef ROOM_H
+#define ROOM_H
 
 #include <memory>
 #include <vector>

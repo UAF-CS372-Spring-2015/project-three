@@ -4,19 +4,19 @@
 // Dylan Tucker, William Showalter, Saira Walia, Adam Walters
 // Entity.h
 
-#ifndef __ENTITY_H__
-#define __ENTITY_H__
+#ifndef ENTITY_H
+#define ENTITY_H
 
 #include <SFML/Graphics.hpp>
-#include <memory>
+#include <memory> // for shared_ptr and make_shared
 
 class Entity {
 public:
 	virtual ~Entity() = default;
 	virtual void draw(std::shared_ptr<sf::RenderWindow>, const float) = 0;
 	virtual sf::Vector2f getPosition() = 0;
-	virtual void setPosition(double, double) = 0;
+	virtual void setPosition(double x, double y) = 0;
 private:
 };
 
-#endif // __ENTITY_H__
+#endif

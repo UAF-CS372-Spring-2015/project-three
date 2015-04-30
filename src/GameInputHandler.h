@@ -1,5 +1,11 @@
-#ifndef __THEPLATFORMER_INPUT_HANDLER
-#define __THEPLATFORMER_INPUT_HANDLER
+// CS 372 Project 3
+// The Platformer
+// Noah Betzen, William Fisher, Jacob McKenna
+// Dylan Tucker, William Showalter, Saira Walia, Adam Walters
+// GameInputHandler.h
+
+#ifndef GAME_INPUT_HANDLER
+#define GAME_INPUT_HANDLER
 
 #include <SFML/Window/Keyboard.hpp>
 #include <memory>

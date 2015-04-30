@@ -1,13 +1,13 @@
-#include <SFML/Graphics.hpp>
-#include <memory>
-using std::shared_ptr;
-using std::make_shared;
+// CS 372 Project 3
+// The Platformer
+// Noah Betzen, William Fisher, Jacob McKenna
+// Dylan Tucker, William Showalter, Saira Walia, Adam Walters
+// Game.cpp
 
 #include "Game.h"
 
-Game::Game(): _window(make_shared<sf::RenderWindow>()), _gameInputHandler(), _player(make_shared<Player>()), _currentRoom()
+Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_shared<Player>()), _currentRoom(), _gameInputHandler()
 {
-  // , "The Platformer", )
   std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
   _window->create(modes[0], "The Platformer");
   _window->setFramerateLimit(60);
@@ -15,28 +15,28 @@ Game::Game(): _window(make_shared<sf::RenderWindow>()), _gameInputHandler(), _pl
   auto size = window()->getSize();
   auto center = window()->getView().getCenter();
 
-  _currentRoom = make_shared<CoinRoom>();
+  _currentRoom = std::make_shared<CoinRoom>();
   _currentRoom->setSize(size.x, size.y);
   _currentRoom->setPosition(center.x, center.y);
   _currentRoom->generateContent();
   _currentRoom->spawn(_player, _currentRoom->getCenter());
 }
 
-bool Game::isRunning()
+std::shared_ptr<sf::RenderWindow> Game::window()
 {
-  return window()->isOpen();
+  return _window;
 }
 
 void Game::run()
 {
   initializeCommands();
 
-  // Keep track of the frametime
+  // keep track of the frametime
   sf::Clock frametime;
 
   while (isRunning())
   {
-      // Get delta time for frame-rate depended movement
+      // get delta time for frame-rate depended movement
       float dt = frametime.restart().asSeconds();
 
       handleEvents();
@@ -46,20 +46,20 @@ void Game::run()
   exit();
 }
 
-void Game::drawEntities(float dt)
+bool Game::isRunning()
 {
+  return window()->isOpen();
+}
 
-  window()->clear(sf::Color::Color(128,128,128));
-
-  _currentRoom->draw(window(), dt);
-
-  window()->display();
+void Game::exit()
+{
+  window()->close();
 }
 
 void Game::initializeCommands()
 {
-  _gameInputHandler.setExitCommand(make_shared<ExitCommand>(this));
-  _gameInputHandler.setMovePlayerCommand(make_shared<MovePlayerCommand>(_player.get()));
+  _gameInputHandler.setExitCommand(std::make_shared<ExitCommand>(this));
+  _gameInputHandler.setMovePlayerCommand(std::make_shared<MovePlayerCommand>(_player.get()));
 }
 
 void Game::handleEvents()
@@ -94,12 +94,15 @@ void Game::handleEvents()
   }
 }
 
-shared_ptr<sf::RenderWindow> Game::window()
+void Game::drawEntities(float dt)
 {
-  return _window;
+  window()->clear(sf::Color::Color(128,128,128));
+
+  _currentRoom->draw(window(), dt);
+
+  window()->display();
 }
 
-void Game::exit()
-{
-  window()->close();
-}
+
+
+
