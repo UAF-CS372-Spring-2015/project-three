@@ -1,7 +1,7 @@
 CC=clang++
-JACOBFLAGS=-I/usr/local/include -L/usr/local/lib
+JACOBFLAGS=-I/usr/local/include
 CFLAGS=$(JACOBFLAGS) -c -std=c++14 -Wall 
-LDFLAGS=-lsfml-graphics -lsfml-window -lsfml-system
+LDFLAGS=-L/usr/local/lib -lsfml-graphics -lsfml-window -lsfml-system
 SOURCES=main.cpp \
 		Game.cpp \
 		GameInputHandler.cpp \
