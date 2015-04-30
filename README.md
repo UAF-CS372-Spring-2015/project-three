@@ -1,9 +1,5 @@
 # The Platformer
 
-Check build status with Travis CI:
-
-[![Build Status](https://travis-ci.org/UAF-CS372-Spring-2015/the-platformer.svg)](https://travis-ci.org/UAF-CS372-Spring-2015/the-platformer)
-
 Have questions/comments/concerns? Check Gitter:
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/UAF-CS372-Spring-2015/the-platformer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
