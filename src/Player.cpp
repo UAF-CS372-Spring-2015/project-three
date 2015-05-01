@@ -8,7 +8,7 @@
 #include <iostream> // for cout and endl
 #include <memory> // for shared_ptr and make_shared
 
-Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _speed(0.f,0.f)
+Player::Player():_lives(3), _sprite(), _texture(),_facing(PLAYER_FACE_RIGHT), _currentSpeed(0.f,0.f), _moveSpeed(500.f)
 {
 	if (!_texture.loadFromFile("assets/mini_morphea_sprite_sheet_by_nyaneoneko-d5brzm5.png"))
 	{
@@ -88,23 +88,31 @@ void Player::setPosition(double x, double y)
 	_sprite.setPosition(x, y);
 }
 
-sf::Vector2f Player::getSpeed()
+sf::Vector2f Player::getCurrentSpeed()
 {
-	return _speed;
+	return _currentSpeed;
 }
 
-void Player::setSpeed(double x, double y)
+void Player::setCurrentSpeed(double x, double y)
 {
-	_speed.x = x;
-	_speed.y = y;
+	_currentSpeed.x = x;
+	_currentSpeed.y = y;
 }
 
 void Player::updatePosition(const float dt)
 {
 	auto pos = getPosition();
 
-	pos.x += getSpeed().x * dt;
-	pos.y += getSpeed().y * dt;
+	pos.x += getCurrentSpeed().x * dt;
+	pos.y += getCurrentSpeed().y * dt;
 
 	setPosition(pos.x, pos.y);
+}
+float Player::getMoveSpeed()
+{
+    return _moveSpeed;
+}
+void Player::setMoveSpeed(double moveSpeed)
+{
+    _moveSpeed = moveSpeed;
 }

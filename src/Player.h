@@ -32,16 +32,18 @@ public:
 	bool isFacingRight();
 	bool isFacing(sf::IntRect);
 
-	sf::Vector2f getSpeed();
-	void setSpeed(double, double);
+	sf::Vector2f getCurrentSpeed();
+	void setCurrentSpeed(double, double);
+	float getMoveSpeed();
+	void setMoveSpeed(double);
 	void updatePosition(const float);
 private:
 	unsigned int _lives;
-
+    sf::Sprite _sprite;
+    sf::Texture _texture;
 	sf::IntRect _facing;
-	sf::Sprite _sprite;
-	sf::Texture _texture;
-	sf::Vector2f _speed;
+	sf::Vector2f _currentSpeed;
+	float _moveSpeed;
 
 };
 

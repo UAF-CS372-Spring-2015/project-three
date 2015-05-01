@@ -16,6 +16,7 @@ class SpikeBall : public Entity
 public:
     SpikeBall();
     ~SpikeBall() throw() {}
+    void setMoveSpeed(sf::Vector2f);
     virtual void draw(std::shared_ptr<sf::RenderWindow>, float) override;
     virtual sf::Vector2f getPosition() override;
     virtual void setPosition(double, double) override;
@@ -23,6 +24,7 @@ protected:
 private:
     sf::Sprite _sprite;
     sf::Texture _texture;
+    sf::Vector2f _moveSpeed;
 };
 
 #endif // SPIKEBALL_H
