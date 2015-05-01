@@ -1,6 +1,6 @@
 CC=clang++
-JACOBFLAGS=-I/usr/local/include 
-CFLAGS=$(JACOBFLAGS) -c -std=c++14 -Wall 
+JACOBFLAGS=-I/usr/local/include
+CFLAGS=$(JACOBFLAGS) -c -std=c++14 -Wall
 LDFLAGS=-L/usr/local/lib -lsfml-graphics -lsfml-window -lsfml-system
 
 GAMESOURCES=src/Game.cpp \
@@ -9,6 +9,7 @@ GAMESOURCES=src/Game.cpp \
 			src/commands/NullCommand.cpp \
 			src/commands/ExitCommand.cpp \
 			src/commands/MovePlayerCommand.cpp \
+			src/commands/RebuildRoomCommand.cpp \
 			src/Entity.cpp \
 			src/Player.cpp \
 			src/Coin.cpp \

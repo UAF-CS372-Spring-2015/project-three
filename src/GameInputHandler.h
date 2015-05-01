@@ -9,24 +9,29 @@
 
 #include <SFML/Window/Keyboard.hpp>
 #include <memory>
+#include <map>
+#include <string>
 #include "commands/Command.h"
 #include "commands/NullCommand.h"
 #include "commands/ExitCommand.h"
 #include "commands/MovePlayerCommand.h"
+#include "commands/RebuildRoomCommand.h"
 
 class Game;
 
 class GameInputHandler
 {
 public:
-  GameInputHandler(): _null(std::make_shared<NullCommand>()) {}
+  GameInputHandler(): _commands(), _null(std::make_shared<NullCommand>()) {}
   std::shared_ptr<Command> handleInput(const sf::Event &);
   void setExitCommand(std::shared_ptr<Command>);
-  void setMovePlayerCommand(std::shared_ptr<Command>);
+  void setMoveCommand(std::shared_ptr<Command>);
+  void setRebuildRoomCommand(std::shared_ptr<Command>);
+
+  void addCommand(sf::Keyboard::Key, std::shared_ptr<Command>);
 public:
+  std::map<sf::Keyboard::Key, std::shared_ptr<Command>> _commands;
   std::shared_ptr<Command> _null;
-  std::shared_ptr<Command> _exit;
-  std::shared_ptr<Command> _movePlayer;
 };
 
 #endif
