@@ -12,6 +12,11 @@ Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_s
   _window->create(modes[0], "The Platformer");
   _window->setFramerateLimit(60);
 
+  buildRoom();
+}
+
+void Game::buildRoom()
+{
   auto size = window()->getSize();
   auto center = window()->getView().getCenter();
 
@@ -59,7 +64,8 @@ void Game::exit()
 void Game::initializeCommands()
 {
   _gameInputHandler.setExitCommand(std::make_shared<ExitCommand>(this));
-  _gameInputHandler.setMovePlayerCommand(std::make_shared<MovePlayerCommand>(_player.get()));
+  _gameInputHandler.setMoveCommand(std::make_shared<MovePlayerCommand>(_player.get()));
+  _gameInputHandler.setRebuildRoomCommand(std::make_shared<RebuildRoomCommand>(this));
 }
 
 void Game::handleEvents()
@@ -102,7 +108,3 @@ void Game::drawEntities(float dt)
 
   window()->display();
 }
-
-
-
-

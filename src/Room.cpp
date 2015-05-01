@@ -49,7 +49,7 @@ sf::Vector2f Room::getSize()
 
 void Room::initializeShape()
 {
-  _shape.setOutlineThickness(-20.f);
+  _shape.setOutlineThickness(-_wallThickness);
   _shape.setOutlineColor(sf::Color(255, 255, 255));
   _shape.setFillColor(sf::Color(0,0,0,0));
 }
@@ -63,8 +63,8 @@ void Room::spawn(std::shared_ptr<Entity> entity, sf::Vector2f location)
 sf::Vector2f Room::getRandomPosition()
 {
   std::random_device rd;
-  std::uniform_int_distribution<int> randx(0, getSize().x);
-  std::uniform_int_distribution<int> randy(0, getSize().y);
+  std::uniform_int_distribution<int> randx(_wallThickness, getSize().x);
+  std::uniform_int_distribution<int> randy(_wallThickness, getSize().y);
 
   return sf::Vector2f(randx(rd), randy(rd));
 }

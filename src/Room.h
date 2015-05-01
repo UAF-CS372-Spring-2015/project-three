@@ -19,8 +19,10 @@ class Room : public Entity
 public:
   Room();
 
+  //Need to implement for room
   virtual void generateContent() = 0;
 
+  //Implement entity methods
   virtual void draw(std::shared_ptr<sf::RenderWindow>, const float) override;
 	virtual sf::Vector2f getPosition() override;
 	virtual void setPosition(double, double) override;
@@ -31,14 +33,14 @@ public:
   void spawn(std::shared_ptr<Entity>, sf::Vector2f);
 
   void initializeShape();
+
 protected:
   sf::Vector2f getRandomPosition();
 
 private:
-
   sf::RectangleShape _shape;
   std::vector<std::shared_ptr<Entity>> _entities;
-
+  double _wallThickness = 20;
 
 };
 
