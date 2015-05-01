@@ -6,6 +6,7 @@
 
 #include "CoinRoom.h"
 #include "Coin.h"
+#include "SpikeBall.h"
 #include <memory>
 
 CoinRoom::CoinRoom(): Room()
@@ -15,7 +16,9 @@ CoinRoom::CoinRoom(): Room()
 void CoinRoom::generateContent()
 {
   auto pos = getCenter();
-
+  pos.y += 10;
+  spawn(std::make_shared<SpikeBall>(), pos);
+  pos.y -= 10;
   for(auto ii=0; ii < 10; ++ii)
   {
     pos.x += ii * 10;
