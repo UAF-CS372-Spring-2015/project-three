@@ -63,8 +63,8 @@ void Room::spawn(std::shared_ptr<Entity> entity, sf::Vector2f location)
 sf::Vector2f Room::getRandomPosition()
 {
   std::random_device rd;
-  std::uniform_int_distribution<int> randx(_wallThickness, getSize().x);
-  std::uniform_int_distribution<int> randy(_wallThickness, getSize().y);
+  std::uniform_int_distribution<int> randx(_wallThickness, getSize().x - _wallThickness);
+  std::uniform_int_distribution<int> randy(_wallThickness, getSize().y - _wallThickness);
 
   return sf::Vector2f(randx(rd), randy(rd));
 }
