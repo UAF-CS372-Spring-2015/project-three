@@ -10,6 +10,8 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <random>
+
 #include "Entity.h"
 
 class Room : public Entity
@@ -24,11 +26,16 @@ public:
 	virtual void setPosition(double, double) override;
 
   void setSize(double, double);
+  sf::Vector2f getSize();
   sf::Vector2f getCenter();
   void spawn(std::shared_ptr<Entity>, sf::Vector2f);
 
   void initializeShape();
+protected:
+  sf::Vector2f getRandomPosition();
+
 private:
+
   sf::RectangleShape _shape;
   std::vector<std::shared_ptr<Entity>> _entities;
 

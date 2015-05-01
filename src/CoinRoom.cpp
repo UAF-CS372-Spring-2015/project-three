@@ -14,11 +14,8 @@ CoinRoom::CoinRoom(): Room()
 
 void CoinRoom::generateContent()
 {
-  auto pos = getCenter();
-
   for(auto ii=0; ii < 10; ++ii)
   {
-    pos.x += ii * 10;
-    spawn(std::make_shared<Coin>(), pos);
+    spawn(std::make_shared<Coin>(), getRandomPosition());
   }
 }
