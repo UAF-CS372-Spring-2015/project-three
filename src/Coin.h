@@ -14,6 +14,7 @@ class Coin : public Entity {
 public:
 
 	Coin();
+	~Coin() throw() {}
 	virtual void draw(std::shared_ptr<sf::RenderWindow>, float) override;
 	virtual sf::Vector2f getPosition() override;
 	virtual void setPosition(double, double) override;

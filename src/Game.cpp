@@ -96,7 +96,7 @@ void Game::handleEvents()
 
 void Game::drawEntities(float dt)
 {
-  window()->clear(sf::Color::Color(128,128,128));
+  window()->clear(sf::Color(128,128,128));
 
   _currentRoom->draw(window(), dt);
 

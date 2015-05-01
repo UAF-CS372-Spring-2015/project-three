@@ -16,7 +16,7 @@ class Room : public Entity
 {
 public:
   Room();
-
+  ~Room() throw() {}
   virtual void generateContent() = 0;
 
   virtual void draw(std::shared_ptr<sf::RenderWindow>, const float) override;

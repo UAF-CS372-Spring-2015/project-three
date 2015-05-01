@@ -15,6 +15,7 @@
 #include "Coin.h"
 #include "EmptyRoom.h"
 #include "CoinRoom.h"
+#include "SpikeBall.h"
 
 class Game
 {
@@ -29,7 +30,7 @@ public:
 
   void initializeCommands(); // TODO: Do we need this?
   void handleEvents();
-  
+
   void drawEntities(float dt);
 
 private:

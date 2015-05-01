@@ -17,6 +17,7 @@
 class Player : public Entity {
 public:
 	Player();
+	~Player() throw() {}
 	unsigned int getLives();
 	virtual void draw(std::shared_ptr<sf::RenderWindow>, const float) override;
 	virtual sf::Vector2f getPosition() override;

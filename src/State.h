@@ -9,7 +9,7 @@
 
 #include "Game.h"
 
-class State : Public Game
+class State : public Game
 {
 public:
   ~State() = default;
