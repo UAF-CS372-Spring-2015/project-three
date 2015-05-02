@@ -45,7 +45,8 @@ void Game::run()
       float dt = frametime.restart().asSeconds();
 
       handleEvents();
-      drawEntities(dt);
+      _currentRoom->update(dt);
+      drawEntities();
   }
 
   exit();
@@ -100,11 +101,11 @@ void Game::handleEvents()
   }
 }
 
-void Game::drawEntities(float dt)
+void Game::drawEntities()
 {
   window()->clear(sf::Color::Color(128,128,128));
 
-  _currentRoom->draw(window(), dt);
+  _currentRoom->draw(window());
 
   window()->display();
 }

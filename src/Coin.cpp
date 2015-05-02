@@ -21,7 +21,7 @@ Coin::Coin(): _sprite(), _texture() {
 	_sprite.setPosition(400,400);
 }
 
-void Coin::draw(std::shared_ptr<sf::RenderWindow> window, float dt){
+void Coin::draw(std::shared_ptr<sf::RenderWindow> window){
 
 	window->draw(_sprite);
 
@@ -47,4 +47,9 @@ sf::FloatRect Coin::getGlobalBounds()
 bool Coin::collides(std::shared_ptr<Entity> entity)
 {
 	return getGlobalBounds().intersects(entity->getGlobalBounds());
+}
+
+void Coin::update(const float &dt)
+{
+
 }

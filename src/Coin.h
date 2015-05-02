@@ -14,11 +14,12 @@ class Coin : public Entity {
 public:
 
 	Coin();
-	virtual void draw(std::shared_ptr<sf::RenderWindow>, float) override;
+	virtual void draw(std::shared_ptr<sf::RenderWindow>) override;
 	virtual sf::Vector2f getPosition() override;
 	virtual void setPosition(double, double) override;
 	virtual sf::FloatRect getGlobalBounds() override;
 	virtual bool collides(std::shared_ptr<Entity>) override;
+	virtual void update(const float &) override;
 
 
 private:

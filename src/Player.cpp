@@ -16,6 +16,7 @@ Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _
 	}
 	// _texture.setSmooth(true);
 	_sprite.setTexture(_texture);
+	_sprite.setTextureRect(_facing);
 	_sprite.setOrigin(sf::Vector2f(16, 16));
 	_sprite.setScale(sf::Vector2f(4.f, 4.f));
 }
@@ -26,11 +27,9 @@ unsigned int Player::getLives(){
 
 }
 
-void Player::draw(std::shared_ptr<sf::RenderWindow> window, const float dt) {
+void Player::draw(std::shared_ptr<sf::RenderWindow> window) {
 	_sprite.setTextureRect(_facing);
-	updatePosition(dt);
 	window->draw(_sprite);
-
 }
 
 void Player::faceLeft()
@@ -99,7 +98,7 @@ void Player::setSpeed(double x, double y)
 	_speed.y = y;
 }
 
-void Player::updatePosition(const float dt)
+void Player::update(const float &dt)
 {
 	auto pos = getPosition();
 

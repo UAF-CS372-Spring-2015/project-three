@@ -13,10 +13,10 @@ Room::Room(): _shape(), _entities()
   initializeShape();
 }
 
-void Room::draw(std::shared_ptr<sf::RenderWindow> window, const float dt)
+void Room::draw(std::shared_ptr<sf::RenderWindow> window)
 {
   for(auto entity:_entities)
-    entity->draw(window, dt);
+    entity->draw(window);
 
   window->draw(_shape);
 }
@@ -61,8 +61,7 @@ void Room::spawn(std::shared_ptr<Entity> entity, sf::Vector2f location)
 
   entity->setPosition(location.x, location.y);
 
-  if (collides(entity))
-    collided = true;
+  collided = collides(entity);
 
   for(auto spawned_entity:_entities)
     if (spawned_entity->collides(entity))
@@ -90,9 +89,19 @@ bool Room::collides(std::shared_ptr<Entity> entity)
 {
   auto bounds = entity->getGlobalBounds();
   auto contains = getGlobalBounds().contains(bounds.left, bounds.top);
-  contains = contains || getGlobalBounds().contains(bounds.left + bounds.width, bounds.top);
-  contains = contains || getGlobalBounds().contains(bounds.left + bounds.width, bounds.top - bounds.height);
-  contains = contains || getGlobalBounds().contains(bounds.left, bounds.top - bounds.height);
+  contains = contains && getGlobalBounds().contains(bounds.left + bounds.width, bounds.top);
+  contains = contains && getGlobalBounds().contains(bounds.left + bounds.width, bounds.top - bounds.height);
+  contains = contains && getGlobalBounds().contains(bounds.left, bounds.top - bounds.height);
 
   return !contains;
+}
+
+void Room::update(const float &dt)
+{
+  for(auto entity:_entities)
+    entity->update(dt);
+
+  for(auto entity:_entities)
+    if (collides(entity))
+      std::cout << "Collided with room wall!" << std::endl;
 }

@@ -13,11 +13,12 @@
 class Entity {
 public:
 	virtual ~Entity() = default;
-	virtual void draw(std::shared_ptr<sf::RenderWindow>, const float) = 0;
+	virtual void draw(std::shared_ptr<sf::RenderWindow>) = 0;
 	virtual sf::Vector2f getPosition() = 0;
 	virtual void setPosition(double x, double y) = 0;
 	virtual sf::FloatRect getGlobalBounds() = 0;
 	virtual bool collides(std::shared_ptr<Entity>) = 0;
+	virtual void update(const float &dt) = 0;
 private:
 };
 
