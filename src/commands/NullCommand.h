@@ -12,7 +12,8 @@
 class NullCommand : public Command
 {
 public:
-  virtual void execute(bool, const sf::Event &) override;
+  NullCommand() = default;
+  virtual void execute(bool pressed, const sf::Event &event) override;
 };
 
 #endif

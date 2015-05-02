@@ -7,15 +7,22 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "Overlay.h"
+#include <vector>
+#include "Game.h"
+#include "Button.h"
 
-class Menu : public Overlay
+class Menu : public Game
 {
 public:
   ~Menu() = default;
   Menu();
 
+  void handleInput();
+  void update(float deltaTime);
+  void draw(float deltaTime);
+
 private:
+  std::vector<Button> _buttons;
 
 };
 

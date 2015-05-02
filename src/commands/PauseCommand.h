@@ -2,19 +2,19 @@
 // The Platformer
 // Noah Betzen, William Fisher, Jacob McKenna
 // Dylan Tucker, William Showalter, Saira Walia, Adam Walters
-// ExitCommand.h
+// PauseCommand.h
 
-#ifndef EXIT_COMMAND
-#define EXIT_COMMAND
+#ifndef PAUSECOMMAND_H
+#define PAUSECOMMAND_H
 
 #include "Command.h"
 
 class Game; // TODO: why is this here? forward declaration? just include Game.h...?
 
-class ExitCommand : public Command
+class PauseCommand : public Command
 {
 public:
-  ExitCommand(Game *game);
+  PauseCommand(Game *game);
   virtual void execute(bool pressed, const sf::Event &event) override;
 private:
   Game *_game; // TODO: Probably should be a unique pointer

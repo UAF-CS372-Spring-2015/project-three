@@ -13,6 +13,7 @@
 #include <string>
 #include "commands/Command.h"
 #include "commands/NullCommand.h"
+#include "commands/PauseCommand.h"
 #include "commands/ExitCommand.h"
 #include "commands/MovePlayerCommand.h"
 #include "commands/RebuildRoomCommand.h"
@@ -23,13 +24,14 @@ class GameInputHandler
 {
 public:
   GameInputHandler(): _commands(), _null(std::make_shared<NullCommand>()) {}
-  std::shared_ptr<Command> handleInput(const sf::Event &);
-  void setExitCommand(std::shared_ptr<Command>);
-  void setMoveCommand(std::shared_ptr<Command>);
-  void setRebuildRoomCommand(std::shared_ptr<Command>);
+  std::shared_ptr<Command> handleInput(const sf::Event &event);
+  void setExitCommand(std::shared_ptr<Command> command);
+  void setMoveCommand(std::shared_ptr<Command> command);
+  void setRebuildRoomCommand(std::shared_ptr<Command> command );
+  void setPauseCommand(std::shared_ptr<Command> command);
 
   void addCommand(sf::Keyboard::Key, std::shared_ptr<Command>);
-public:
+public: // TODO: this should be private?
   std::map<sf::Keyboard::Key, std::shared_ptr<Command>> _commands;
   std::shared_ptr<Command> _null;
 };

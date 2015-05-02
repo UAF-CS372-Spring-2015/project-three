@@ -2,7 +2,7 @@
 // The Platformer
 // Noah Betzen, William Fisher, Jacob McKenna
 // Dylan Tucker, William Showalter, Saira Walia, Adam Walters
-// NullCommand.h
+// NullCommand.cpp
 
 #include "NullCommand.h"
 

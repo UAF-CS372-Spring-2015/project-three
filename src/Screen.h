@@ -7,15 +7,21 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 
+#include <SFML/Graphics.hpp>
+#include "Game.h"
 
-class Screen
+class Screen : public Game
 {
 public:
   ~Screen() = default;
   Screen();
+
+  virtual void handleInput(sf::RenderWindow &window) = 0;
+  virtual void update(sf::Time delta) = 0;
+  virtual void draw(sf::RenderWindow &window) = 0;
   
 private:
-
+	sf::RenderWindow _window;
 };
 
 #endif
