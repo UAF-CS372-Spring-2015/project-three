@@ -108,3 +108,13 @@ void Player::updatePosition(const float dt)
 
 	setPosition(pos.x, pos.y);
 }
+
+sf::FloatRect Player::getGlobalBounds()
+{
+	return _sprite.getGlobalBounds();
+}
+
+bool Player::collides(std::shared_ptr<Entity> entity)
+{
+	return getGlobalBounds().intersects(entity->getGlobalBounds());
+}

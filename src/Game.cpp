@@ -23,8 +23,8 @@ void Game::buildRoom()
   _currentRoom = std::make_shared<CoinRoom>();
   _currentRoom->setSize(size.x, size.y);
   _currentRoom->setPosition(center.x, center.y);
-  _currentRoom->generateContent();
   _currentRoom->spawn(_player, _currentRoom->getCenter());
+  _currentRoom->generateContent();
 }
 
 std::shared_ptr<sf::RenderWindow> Game::window()

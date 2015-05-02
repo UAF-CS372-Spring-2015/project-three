@@ -6,6 +6,7 @@
 
 #include "Room.h"
 #include <memory>
+#include <iostream>
 
 Room::Room(): _shape(), _entities()
 {
@@ -56,8 +57,19 @@ void Room::initializeShape()
 
 void Room::spawn(std::shared_ptr<Entity> entity, sf::Vector2f location)
 {
+  auto collided = false;
+
   entity->setPosition(location.x, location.y);
-  _entities.push_back(entity);
+
+  if (collides(entity))
+    collided = true;
+
+  for(auto spawned_entity:_entities)
+    if (spawned_entity->collides(entity))
+      collided = true;
+
+  if (!collided)
+    _entities.push_back(entity);
 }
 
 sf::Vector2f Room::getRandomPosition()
@@ -67,4 +79,20 @@ sf::Vector2f Room::getRandomPosition()
   std::uniform_int_distribution<int> randy(_wallThickness, getSize().y - _wallThickness);
 
   return sf::Vector2f(randx(rd), randy(rd));
+}
+
+sf::FloatRect Room::getGlobalBounds()
+{
+  return _shape.getGlobalBounds();
+}
+
+bool Room::collides(std::shared_ptr<Entity> entity)
+{
+  auto bounds = entity->getGlobalBounds();
+  auto contains = getGlobalBounds().contains(bounds.left, bounds.top);
+  contains = contains || getGlobalBounds().contains(bounds.left + bounds.width, bounds.top);
+  contains = contains || getGlobalBounds().contains(bounds.left + bounds.width, bounds.top - bounds.height);
+  contains = contains || getGlobalBounds().contains(bounds.left, bounds.top - bounds.height);
+
+  return !contains;
 }

@@ -38,3 +38,13 @@ void Coin::setPosition(double x, double y){
 	_sprite.setPosition(x, y);
 
 }
+
+sf::FloatRect Coin::getGlobalBounds()
+{
+  return _sprite.getGlobalBounds();
+}
+
+bool Coin::collides(std::shared_ptr<Entity> entity)
+{
+	return getGlobalBounds().intersects(entity->getGlobalBounds());
+}

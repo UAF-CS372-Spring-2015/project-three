@@ -21,6 +21,9 @@ public:
 	virtual void draw(std::shared_ptr<sf::RenderWindow>, const float) override;
 	virtual sf::Vector2f getPosition() override;
 	virtual void setPosition(double, double) override;
+	virtual sf::FloatRect getGlobalBounds() override;
+	virtual bool collides(std::shared_ptr<Entity>) override;
+
 	void faceLeft();
 	void faceRight();
 	void faceUp();

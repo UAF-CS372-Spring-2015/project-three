@@ -16,6 +16,8 @@ public:
 	virtual void draw(std::shared_ptr<sf::RenderWindow>, const float) = 0;
 	virtual sf::Vector2f getPosition() = 0;
 	virtual void setPosition(double x, double y) = 0;
+	virtual sf::FloatRect getGlobalBounds() = 0;
+	virtual bool collides(std::shared_ptr<Entity>) = 0;
 private:
 };
 
