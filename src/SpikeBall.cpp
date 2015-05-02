@@ -8,7 +8,7 @@
 #include "SpikeBall.h"
 
 
-SpikeBall::SpikeBall()
+SpikeBall::SpikeBall(): _sprite(), _texture()
 {
     if (!_texture.loadFromFile("assets/spikeball.png"))
 	{
@@ -23,7 +23,7 @@ SpikeBall::SpikeBall()
 
 void SpikeBall::draw(std::shared_ptr<sf::RenderWindow> window, float dt)
 {
-
+	updatePosition(dt);
 	window->draw(_sprite);
 
 }
@@ -39,5 +39,33 @@ void SpikeBall::setPosition(double x, double y)
 {
 
 	_sprite.setPosition(x, y);
+}
 
+sf::Vector2f SpikeBall::getCurrentSpeed()
+{
+	return _currentSpeed;
+}
+
+void SpikeBall::setCurrentSpeed(double x, double y)
+{
+	_currentSpeed.x = x;
+	_currentSpeed.y = y;
+}
+
+void SpikeBall::updatePosition(const float dt)
+{
+	auto pos = getPosition();
+
+	pos.x += getCurrentSpeed().x * dt;
+	pos.y += getCurrentSpeed().y * dt;
+
+	setPosition(pos.x, pos.y);
+}
+float SpikeBall::getMoveSpeed()
+{
+    return _moveSpeed;
+}
+void SpikeBall::setMoveSpeed(double moveSpeed)
+{
+    _moveSpeed = moveSpeed;
 }

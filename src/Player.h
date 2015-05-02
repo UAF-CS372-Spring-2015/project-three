@@ -31,19 +31,20 @@ public:
 	bool isFacingLeft();
 	bool isFacingRight();
 	bool isFacing(sf::IntRect);
-
-	sf::Vector2f getCurrentSpeed();
-	void setCurrentSpeed(double, double);
+    void setCurrentSpeed(double, double);
+    sf::Vector2f getCurrentSpeed();
 	float getMoveSpeed();
 	void setMoveSpeed(double);
 	void updatePosition(const float);
+
+
 private:
 	unsigned int _lives;
     sf::Sprite _sprite;
     sf::Texture _texture;
 	sf::IntRect _facing;
-	sf::Vector2f _currentSpeed;
-	float _moveSpeed;
+    sf::Vector2f _currentSpeed;
+    float _moveSpeed;
 
 };
 
