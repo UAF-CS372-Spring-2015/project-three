@@ -2,17 +2,18 @@
 // The Platformer
 // Noah Betzen, William Fisher, Jacob McKenna
 // Dylan Tucker, William Showalter, Saira Walia, Adam Walters
-// Overlay.h
+// Screen.h
 
-#ifndef OVERLAY_H
-#define OVERLAY_H
+#ifndef SCREEN_H
+#define SCREEN_H
 
-class Overlay
+
+class Screen
 {
 public:
-  ~Overlay() = default;
-  Overlay();
-
+  ~Screen() = default;
+  Screen();
+  
 private:
 
 };

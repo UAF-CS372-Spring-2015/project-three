@@ -2,6 +2,6 @@
 // The Platformer
 // Noah Betzen, William Fisher, Jacob McKenna
 // Dylan Tucker, William Showalter, Saira Walia, Adam Walters
-// Overlay.cpp
+// Screen.h
 
-#include "Overlay.h"
+#include "Screen.h"
