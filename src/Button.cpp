@@ -6,7 +6,6 @@
 
 #include "Button.h"
 #include <SFML/Graphics.hpp>
-#include <string>
 
 Button::Button(const std::string &imageName, sf::Vector2f position):_position(position)
 {

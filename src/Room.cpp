@@ -5,7 +5,7 @@
 // Room.cpp
 
 #include "Room.h"
-#include <memory>
+#include <random>
 
 Room::Room(): _shape(), _entities()
 {

@@ -5,6 +5,11 @@
 // GameInputHandler.cpp
 
 #include "GameInputHandler.h"
+#include "commands/NullCommand.h"
+
+GameInputHandler::GameInputHandler():_null(std::make_shared<NullCommand>())
+{
+}
 
 void GameInputHandler::setExitCommand(std::shared_ptr<Command> command)
 {

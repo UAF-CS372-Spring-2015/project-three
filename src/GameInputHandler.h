@@ -7,22 +7,19 @@
 #ifndef GAME_INPUT_HANDLER_H
 #define GAME_INPUT_HANDLER_H
 
+
 #include <SFML/Window/Keyboard.hpp>
 #include <memory>
 #include <map>
 #include <string>
-#include "Game.h"
 #include "commands/Command.h"
-#include "commands/NullCommand.h"
-//#include "commands/PauseCommand.h"
-//#include "commands/ExitCommand.h"
-//#include "commands/MovePlayerCommand.h"
-//#include "commands/RebuildRoomCommand.h"
+//#include "Game.h"
 
 class GameInputHandler : public Game
 {
 public:
-  GameInputHandler(): _commands(), _null(std::make_shared<NullCommand>()) {}
+  ~GameInputHandler() = default;
+  GameInputHandler();
   std::shared_ptr<Command> handleInput(const sf::Event &event);
   void setExitCommand(std::shared_ptr<Command> command);
   void setMoveCommand(std::shared_ptr<Command> command);

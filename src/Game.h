@@ -14,8 +14,7 @@
 #include "Menu.h"
 #include "Player.h"
 #include "Coin.h"
-#include "EmptyRoom.h"
-#include "CoinRoom.h"
+#include "Room.h"
 
 class Game
 {

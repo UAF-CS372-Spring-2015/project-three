@@ -6,6 +6,7 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
+
 #include "Entity.h"
 #include <memory> // for shared_ptr
 

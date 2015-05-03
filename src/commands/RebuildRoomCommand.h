@@ -15,7 +15,7 @@ public:
   RebuildRoomCommand(Game *);
   virtual void execute(bool, const sf::Event &) override;
 private:
-  Game *_game; // TODO: Probably shoudl be a unique pointer
+  Game *_game; // TODO: Probably should be a unique pointer
 };
 
 #endif
