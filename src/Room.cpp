@@ -5,6 +5,7 @@
 // Room.cpp
 
 #include "Room.h"
+#include "Entity.h"
 #include <memory>
 #include <iostream>
 
@@ -37,10 +38,10 @@ void Room::setPosition(double x, double y)
   _shape.setPosition(x, y);
 }
 
-void Room::setSize(double x, double y)
+void Room::setSize(double width, double height)
 {
-  _shape.setSize(sf::Vector2f(x, y));
-  _shape.setOrigin(x/2, y/2);
+  _shape.setSize(sf::Vector2f(width, height));
+  // _shape.setOrigin(x/2, y/2);
 }
 
 sf::Vector2f Room::getSize()
@@ -74,8 +75,8 @@ void Room::spawn(std::shared_ptr<Entity> entity, sf::Vector2f location)
 sf::Vector2f Room::getRandomPosition()
 {
   std::random_device rd;
-  std::uniform_int_distribution<int> randx(_wallThickness, getSize().x - _wallThickness);
-  std::uniform_int_distribution<int> randy(_wallThickness, getSize().y - _wallThickness);
+  std::uniform_int_distribution<int> randx(_wallThickness, getSize().x-_wallThickness);
+  std::uniform_int_distribution<int> randy(_wallThickness, getSize().y-_wallThickness);
 
   return sf::Vector2f(randx(rd), randy(rd));
 }
@@ -88,10 +89,9 @@ sf::FloatRect Room::getGlobalBounds()
 bool Room::collides(std::shared_ptr<Entity> entity)
 {
   auto bounds = entity->getGlobalBounds();
-  auto contains = getGlobalBounds().contains(bounds.left, bounds.top);
-  contains = contains && getGlobalBounds().contains(bounds.left + bounds.width, bounds.top);
-  contains = contains && getGlobalBounds().contains(bounds.left + bounds.width, bounds.top - bounds.height);
-  contains = contains && getGlobalBounds().contains(bounds.left, bounds.top - bounds.height);
+  auto currentBounds = getGlobalBounds();
+  auto contains = currentBounds.contains(bounds.left-_wallThickness, bounds.top-_wallThickness);
+  contains = contains && currentBounds.contains(bounds.left + bounds.width + _wallThickness, bounds.top + bounds.height + _wallThickness);
 
   return !contains;
 }
@@ -100,4 +100,12 @@ void Room::update(const float &dt)
 {
   for(auto entity:_entities)
     entity->update(dt);
+
+  for(auto entity:_entities)
+    if (collides(entity))
+      entity->handleCollision(this);
 }
+
+// void Room::collisionNotify(Entity *)
+// {
+// }

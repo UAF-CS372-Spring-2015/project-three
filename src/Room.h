@@ -7,14 +7,15 @@
 #ifndef ROOM_H
 #define ROOM_H
 
+#include <SFML/Graphics.hpp>
 #include <memory>
 #include <vector>
 #include <string>
 #include <random>
 
-#include "Entity.h"
+class Entity;
 
-class Room : public Entity
+class Room
 {
 public:
   Room();
@@ -23,12 +24,13 @@ public:
   virtual void generateContent() = 0;
 
   //Implement entity methods
-  virtual void draw(std::shared_ptr<sf::RenderWindow>) override;
-	virtual sf::Vector2f getPosition() override;
-	virtual void setPosition(double, double) override;
-  virtual sf::FloatRect getGlobalBounds() override;
-  virtual bool collides(std::shared_ptr<Entity>) override;
-  virtual void update(const float &dt) override;
+  void draw(std::shared_ptr<sf::RenderWindow>);
+	sf::Vector2f getPosition();
+	void setPosition(double, double);
+  sf::FloatRect getGlobalBounds();
+  bool collides(std::shared_ptr<Entity>);
+  void update(const float &dt);
+  // virtual void collisionNotify(Entity *) override;
 
   void setSize(double, double);
   sf::Vector2f getSize();

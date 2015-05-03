@@ -5,10 +5,13 @@
 // Player.cpp
 
 #include "Player.h"
+#include "Room.h"
+#include "Coin.h"
+
 #include <iostream> // for cout and endl
 #include <memory> // for shared_ptr and make_shared
 
-Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _speed(0.f,0.f)
+Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _speed(0.f,0.f), _previousPosition()
 {
 	if (!_texture.loadFromFile("assets/mini_morphea_sprite_sheet_by_nyaneoneko-d5brzm5.png"))
 	{
@@ -17,7 +20,7 @@ Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _
 	// _texture.setSmooth(true);
 	_sprite.setTexture(_texture);
 	_sprite.setTextureRect(_facing);
-	_sprite.setOrigin(sf::Vector2f(16, 16));
+	// _sprite.setOrigin(sf::Vector2f(16, 16));
 	_sprite.setScale(sf::Vector2f(4.f, 4.f));
 }
 
@@ -84,6 +87,7 @@ sf::Vector2f Player::getPosition()
 
 void Player::setPosition(double x, double y)
 {
+	_previousPosition = getPosition();
 	_sprite.setPosition(x, y);
 }
 
@@ -110,10 +114,18 @@ void Player::update(const float &dt)
 
 sf::FloatRect Player::getGlobalBounds()
 {
+	std::cout << getPosition().x << " x " << getPosition().y << std::endl;
+	std::cout << _sprite.getGlobalBounds().width << " x " << _sprite.getGlobalBounds().height << std::endl;
 	return _sprite.getGlobalBounds();
 }
 
 bool Player::collides(std::shared_ptr<Entity> entity)
 {
 	return getGlobalBounds().intersects(entity->getGlobalBounds());
+}
+
+void Player::handleCollision(Room *room)
+{
+	setPosition(_previousPosition.x, _previousPosition.y);
+	setSpeed(0,0);
 }

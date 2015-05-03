@@ -10,6 +10,9 @@
 #include <SFML/Graphics.hpp>
 #include <memory> // for shared_ptr and make_shared
 
+class Room;
+class Coin;
+
 class Entity {
 public:
 	virtual ~Entity() = default;
@@ -19,6 +22,8 @@ public:
 	virtual sf::FloatRect getGlobalBounds() = 0;
 	virtual bool collides(std::shared_ptr<Entity>) = 0;
 	virtual void update(const float &dt) = 0;
+	virtual void handleCollision(Room *);
+	virtual void handleCollision(Coin *);
 private:
 };
 
