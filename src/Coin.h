@@ -21,7 +21,6 @@ public:
 	virtual bool collides(std::shared_ptr<Entity>) override;
 	virtual void update(const float &) override;
 
-
 private:
 	sf::Sprite _sprite;
 	sf::Texture _texture;

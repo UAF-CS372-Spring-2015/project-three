@@ -100,8 +100,4 @@ void Room::update(const float &dt)
 {
   for(auto entity:_entities)
     entity->update(dt);
-
-  for(auto entity:_entities)
-    if (collides(entity))
-      std::cout << "Collided with room wall!" << std::endl;
 }

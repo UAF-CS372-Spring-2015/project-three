@@ -7,6 +7,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Entity.h"
+#include "Room.h"
 #include <memory> // for shared_ptr
 
 #define PLAYER_FACE_DOWN sf::IntRect(0, 0, 32, 32)
