@@ -4,7 +4,6 @@
 // Dylan Tucker, William Showalter, Saira Walia, Adam Walters
 // PauseCommand.cpp
 
-#include "../Game.h"
 #include "PauseCommand.h"
 
 PauseCommand::PauseCommand(Game *game)

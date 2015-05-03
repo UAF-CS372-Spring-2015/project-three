@@ -1,5 +1,4 @@
 #include "RebuildRoomCommand.h"
-#include "../Game.h"
 
 RebuildRoomCommand::RebuildRoomCommand(Game * game): _game(game)
 {

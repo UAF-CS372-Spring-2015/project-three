@@ -4,12 +4,10 @@
 // Dylan Tucker, William Showalter, Saira Walia, Adam Walters
 // PauseCommand.h
 
-#ifndef PAUSECOMMAND_H
-#define PAUSECOMMAND_H
+#ifndef PAUSE_COMMAND_H
+#define PAUSE_COMMAND_H
 
 #include "Command.h"
-
-class Game; // TODO: why is this here? forward declaration? just include Game.h...?
 
 class PauseCommand : public Command
 {

@@ -9,8 +9,6 @@
 
 #include "Command.h"
 
-class Game; // TODO: why is this here? forward declaration? just include Game.h...?
-
 class ExitCommand : public Command
 {
 public:

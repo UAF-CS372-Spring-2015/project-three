@@ -5,7 +5,6 @@
 // Game.cpp
 
 #include "Game.h"
-#include "Menu.h"
 #include <iostream>
 
 Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_shared<Player>()), _currentRoom(), _gameInputHandler(), _isPaused(false)

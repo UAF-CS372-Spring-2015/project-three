@@ -17,7 +17,7 @@ public:
   Screen();
 
   virtual void handleInput(sf::RenderWindow &window) = 0;
-  virtual void update(sf::Time delta) = 0;
+  virtual void update(sf::Time deltaTime) = 0;
   virtual void draw(sf::RenderWindow &window) = 0;
   
 private:

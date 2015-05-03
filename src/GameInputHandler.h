@@ -4,23 +4,22 @@
 // Dylan Tucker, William Showalter, Saira Walia, Adam Walters
 // GameInputHandler.h
 
-#ifndef GAME_INPUT_HANDLER
-#define GAME_INPUT_HANDLER
+#ifndef GAME_INPUT_HANDLER_H
+#define GAME_INPUT_HANDLER_H
 
 #include <SFML/Window/Keyboard.hpp>
 #include <memory>
 #include <map>
 #include <string>
+#include "Game.h"
 #include "commands/Command.h"
 #include "commands/NullCommand.h"
-#include "commands/PauseCommand.h"
-#include "commands/ExitCommand.h"
-#include "commands/MovePlayerCommand.h"
-#include "commands/RebuildRoomCommand.h"
+//#include "commands/PauseCommand.h"
+//#include "commands/ExitCommand.h"
+//#include "commands/MovePlayerCommand.h"
+//#include "commands/RebuildRoomCommand.h"
 
-class Game;
-
-class GameInputHandler
+class GameInputHandler : public Game
 {
 public:
   GameInputHandler(): _commands(), _null(std::make_shared<NullCommand>()) {}

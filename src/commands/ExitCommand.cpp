@@ -4,7 +4,6 @@
 // Dylan Tucker, William Showalter, Saira Walia, Adam Walters
 // ExitCommand.cpp
 
-#include "../Game.h"
 #include "ExitCommand.h"
 
 ExitCommand::ExitCommand(Game *game)

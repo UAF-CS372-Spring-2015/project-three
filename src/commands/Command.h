@@ -8,6 +8,7 @@
 #define COMMAND_H
 
 #include <SFML/Graphics.hpp>
+#include "../GameInputHandler.h"
 
 class Command
 {
