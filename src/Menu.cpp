@@ -31,7 +31,7 @@ void Menu::handleInput()
 
   auto mousePosition = sf::Mouse::getPosition(*_game->window().get());
 
-  if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+  if(sf::Mouse::isButtonReleased(sf::Mouse::Left))
   {
     for(auto button : _buttons)
     {
