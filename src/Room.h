@@ -13,9 +13,10 @@
 #include <string>
 #include <random>
 
-class Entity;
+// class Entity;
+#include "Entity.h"
 
-class Room
+class Room : public Entity
 {
 public:
   Room();
@@ -24,13 +25,14 @@ public:
   virtual void generateContent() = 0;
 
   //Implement entity methods
-  void draw(std::shared_ptr<sf::RenderWindow>);
-	sf::Vector2f getPosition();
-	void setPosition(double, double);
-  sf::FloatRect getGlobalBounds();
-  void update(const float &dt);
+  virtual void draw(std::shared_ptr<sf::RenderWindow>) override;
+	virtual sf::Vector2f getPosition() override;
+	virtual void setPosition(double, double) override;
+  virtual sf::FloatRect getGlobalBounds() override;
+  virtual void update(const float &dt) override;
 
-  bool collides(std::shared_ptr<Entity>);
+  virtual bool collides(std::shared_ptr<Entity>) override;
+  
   void notifyOfCollision(std::weak_ptr<Entity>, std::weak_ptr<Entity>);
   void checkForCollisions();
 
