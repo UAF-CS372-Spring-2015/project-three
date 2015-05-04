@@ -11,6 +11,8 @@
 #include <memory>
 #include <SFML/Graphics.hpp>
 
+class Game;
+
 class Button
 {
 public:
@@ -27,7 +29,7 @@ public:
   void setPosition(sf::Vector2f position);
   void setPosition(float x, float y);
 
-  void (*callBack)(); // thing to do if button is clicked
+  void (*callBack)(Game *game); // thing to do if button is clicked
 
 private:
   sf::Vector2f _position;

@@ -17,11 +17,11 @@ Menu::Menu(Game *game):_game(game)
   float middleY = _game->window()->getSize().y;
 
   Button play("assets/play.png", sf::Vector2f(middleX/2,middleY/6));
-  play.callBack = [](){ std::cout << "Play game!" << std::endl; };
+  play.callBack = [](Game *game){ std::cout << "Play game!" << std::endl; game->pauseGame();};
   _buttons.push_back(play);
   
   Button quit("assets/quit.png", sf::Vector2f(middleX/2,middleY/3));
-  quit.callBack = [](){ std::cout << "Quit game!" << std::endl; exit(0);};
+  quit.callBack = [](Game *game){ std::cout << "Quit game!" << std::endl; exit(0);};
   _buttons.push_back(quit);
 }
 
@@ -38,7 +38,7 @@ void Menu::handleInput()
     {
       if(button.getBounds().contains(mousePosition.x, mousePosition.y))
       {
-        button.callBack();
+        button.callBack(_game);
       }
     }
   }
