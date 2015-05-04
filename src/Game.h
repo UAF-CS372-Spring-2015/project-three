@@ -30,9 +30,9 @@ public:
   void initializeCommands(); // TODO: Do we need this?
   void handleEvents();
 
-  void drawEntities(float dt);
+  void drawEntities();
   void buildRoom();
-  
+
 private:
   std::shared_ptr<sf::RenderWindow> _window;
   std::shared_ptr<Player> _player;
