@@ -51,7 +51,7 @@ void Menu::update(float deltaTime)
 
 void Menu::draw(float deltaTime)
 {
-  _game->window()->clear(sf::Color::Color(0,0,0));
+  _game->window()->clear(sf::Color::Color(128,128,128));
 
   for(auto button : _buttons)
   {

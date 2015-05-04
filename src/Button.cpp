@@ -16,7 +16,7 @@ Button::Button(const std::string &imageName, sf::Vector2f position):_position(po
 
 void Button::draw(std::shared_ptr<sf::RenderWindow> window)
 {
-  window->draw(_sprite);
+ 	window->draw(_sprite);
 }
 
 sf::Vector2u Button::getSize()
