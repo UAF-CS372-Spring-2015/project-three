@@ -56,7 +56,7 @@ void Room::initializeShape()
   _shape.setFillColor(sf::Color(0,0,0,0));
 }
 
-void Room::spawn(std::shared_ptr<Entity> entity, sf::Vector2f location)
+bool Room::spawn(std::shared_ptr<Entity> entity, sf::Vector2f location)
 {
   auto collided = false;
 
@@ -70,6 +70,8 @@ void Room::spawn(std::shared_ptr<Entity> entity, sf::Vector2f location)
 
   if (!collided)
     _entities.push_back(entity);
+
+  return !collided;
 }
 
 void Room::despawn(std::shared_ptr<Entity> entity)
@@ -110,13 +112,17 @@ bool Room::collides(std::shared_ptr<Entity> entity)
 
 void Room::update(const float &dt)
 {
-  using collision_pair = std::pair<std::weak_ptr<Entity>, std::weak_ptr<Entity>>;
-  std::vector<collision_pair> collisions;
-
   for(auto entity:_entities)
     entity->update(dt);
 
-  //make sure we check for collisions after all the updates have happened
+  checkForCollisions();
+}
+
+void Room::checkForCollisions()
+{
+  using collision_pair = std::pair<std::weak_ptr<Entity>, std::weak_ptr<Entity>>;
+  std::vector<collision_pair> collisions;
+
   for(auto entity:_entities)
   {
     //check for collision with room
@@ -125,7 +131,7 @@ void Room::update(const float &dt)
 
     //create a list of things that had collisions and handle them at the end
     //using weak pointers incase one of the items should be deleted as part of
-    //the collision
+    //the collision (user picks up a coin)
     for(auto other_entity:_entities)
       if(entity != other_entity && entity->collides(other_entity))
         collisions.push_back(collision_pair(std::weak_ptr<Entity>(entity), std::weak_ptr<Entity>(other_entity)));
