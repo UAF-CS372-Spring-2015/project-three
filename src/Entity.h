@@ -12,6 +12,7 @@
 
 class Room;
 class Coin;
+class Player;
 
 class Entity {
 public:
@@ -25,6 +26,7 @@ public:
 	virtual void handleCollision(Room *, Entity *);
 	virtual void handleCollision(Room *);
 	virtual void handleCollision(Room *, Coin *);
+	virtual void handleCollision(Room *, Player *);
 private:
 };
 
