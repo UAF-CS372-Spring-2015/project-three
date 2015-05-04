@@ -7,7 +7,7 @@
 #include "Game.h"
 
 
-Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_shared<Player>()), _gameInputHandler(), _isPaused(false), _currentRoom()
+Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_shared<Player>()), _isPaused(false), _gameInputHandler(), _currentRoom()
 {
   std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
   _window->create(modes[0], "The Platformer");

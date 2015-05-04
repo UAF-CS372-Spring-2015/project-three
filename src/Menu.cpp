@@ -21,7 +21,7 @@ Menu::Menu(Game *game):_game(game)
   _buttons.push_back(play);
   
   Button quit("assets/quit.png", sf::Vector2f(middleX/2,middleY/3));
-  quit.callBack = [](){ std::cout << "Quit game!" << std::endl; };
+  quit.callBack = [](){ std::cout << "Quit game!" << std::endl; exit(0);};
   _buttons.push_back(quit);
 }
 
