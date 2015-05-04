@@ -32,7 +32,7 @@ public:
   virtual void update(const float &dt) override;
 
   virtual bool collides(std::shared_ptr<Entity>) override;
-  
+
   void notifyOfCollision(std::weak_ptr<Entity>, std::weak_ptr<Entity>);
   void checkForCollisions();
 
@@ -49,7 +49,10 @@ protected:
   sf::Vector2f getRandomPosition();
 
 private:
-  sf::RectangleShape _shape;
+  sf::RectangleShape _walls;
+  sf::RectangleShape _background;
+  sf::Texture _texture;
+
   std::vector<std::shared_ptr<Entity>> _entities;
   double _wallThickness = 20;
 
