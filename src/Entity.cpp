@@ -16,6 +16,12 @@ void Entity::handleCollision(Room *room)
 {
 }
 
-void Entity::handleCollision(Coin *coin)
+void Entity::handleCollision(Room *room, Coin *coin)
 {
+}
+
+void Entity::handleCollision(Room *room, Entity *entity)
+{
+  if (Coin* e = dynamic_cast<Coin*>(entity))
+    handleCollision(room, e);
 }

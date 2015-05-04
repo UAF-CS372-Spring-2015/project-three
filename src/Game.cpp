@@ -18,7 +18,6 @@ Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_s
 void Game::buildRoom()
 {
   auto size = window()->getSize();
-  auto center = window()->getView().getCenter();
 
   _currentRoom = std::make_shared<CoinRoom>();
   _currentRoom->setSize(size.x, size.y);

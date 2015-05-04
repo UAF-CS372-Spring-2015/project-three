@@ -72,6 +72,18 @@ void Room::spawn(std::shared_ptr<Entity> entity, sf::Vector2f location)
     _entities.push_back(entity);
 }
 
+void Room::despawn(std::shared_ptr<Entity> entity)
+{
+  _entities.erase( std::remove( _entities.begin(), _entities.end(), entity ), _entities.end() );
+}
+
+void Room::despawn(Entity *entity)
+{
+  for(auto e:_entities)
+    if (e.get() == entity)
+      return despawn(e);
+}
+
 sf::Vector2f Room::getRandomPosition()
 {
   std::random_device rd;
@@ -98,12 +110,41 @@ bool Room::collides(std::shared_ptr<Entity> entity)
 
 void Room::update(const float &dt)
 {
+  using collision_pair = std::pair<std::weak_ptr<Entity>, std::weak_ptr<Entity>>;
+  std::vector<collision_pair> collisions;
+
   for(auto entity:_entities)
     entity->update(dt);
 
+  //make sure we check for collisions after all the updates have happened
   for(auto entity:_entities)
+  {
+    //check for collision with room
     if (collides(entity))
       entity->handleCollision(this);
+
+    //create a list of things that had collisions and handle them at the end
+    //using weak pointers incase one of the items should be deleted as part of
+    //the collision
+    for(auto other_entity:_entities)
+      if(entity != other_entity && entity->collides(other_entity))
+        collisions.push_back(collision_pair(std::weak_ptr<Entity>(entity), std::weak_ptr<Entity>(other_entity)));
+  }
+
+  for(auto cpair:collisions)
+  {
+    notifyOfCollision(cpair.first, cpair.second);
+    notifyOfCollision(cpair.second, cpair.first);
+  }
+}
+
+void Room::notifyOfCollision(std::weak_ptr<Entity> entity1, std::weak_ptr<Entity> entity2)
+{
+  auto first = entity1.lock();
+  auto second = entity2.lock();
+
+  if (first && second)
+    first->handleCollision(this, second.get());
 }
 
 // void Room::collisionNotify(Entity *)

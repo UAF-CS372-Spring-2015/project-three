@@ -31,11 +31,14 @@ public:
   bool collides(std::shared_ptr<Entity>);
   void update(const float &dt);
   // virtual void collisionNotify(Entity *) override;
+  void notifyOfCollision(std::weak_ptr<Entity>, std::weak_ptr<Entity>);
 
   void setSize(double, double);
   sf::Vector2f getSize();
   sf::Vector2f getCenter();
   void spawn(std::shared_ptr<Entity>, sf::Vector2f);
+  void despawn(std::shared_ptr<Entity>);
+  void despawn(Entity *);
 
   void initializeShape();
 

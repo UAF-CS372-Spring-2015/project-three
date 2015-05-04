@@ -114,8 +114,6 @@ void Player::update(const float &dt)
 
 sf::FloatRect Player::getGlobalBounds()
 {
-	std::cout << getPosition().x << " x " << getPosition().y << std::endl;
-	std::cout << _sprite.getGlobalBounds().width << " x " << _sprite.getGlobalBounds().height << std::endl;
 	return _sprite.getGlobalBounds();
 }
 
@@ -128,4 +126,9 @@ void Player::handleCollision(Room *room)
 {
 	setPosition(_previousPosition.x, _previousPosition.y);
 	setSpeed(0,0);
+}
+
+void Player::handleCollision(Room *room, Coin *coin)
+{
+	room->despawn(coin);
 }
