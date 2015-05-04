@@ -38,3 +38,9 @@ void Coin::setPosition(double x, double y){
 	_sprite.setPosition(x, y);
 
 }
+
+sf::FloatRect Coin::getBoundingBox() const{
+
+	return _sprite.getGlobalBounds();
+
+}

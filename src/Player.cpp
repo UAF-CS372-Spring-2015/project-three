@@ -17,7 +17,7 @@ Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _
 	// _texture.setSmooth(true);
 	_sprite.setTexture(_texture);
 	_sprite.setOrigin(sf::Vector2f(16, 16));
-	_sprite.setScale(sf::Vector2f(4.f, 4.f));
+	//_sprite.setScale(sf::Vector2f(4.f, 4.f));
 }
 
 unsigned int Player::getLives(){
@@ -108,3 +108,25 @@ void Player::updatePosition(const float dt)
 
 	setPosition(pos.x, pos.y);
 }
+
+sf::FloatRect Player::getBoundingBox() {
+
+	return _sprite.getGlobalBounds();
+
+}
+
+
+void Player::collisionWithCoin(const Coin & co){
+
+	sf::FloatRect playerBox = getBoundingBox();
+	sf::FloatRect otherBox = co.getBoundingBox();
+
+	if (playerBox.intersects(otherBox)){
+
+		std::cout << "There's a collision" << std::endl;
+
+	}
+
+}
+
+

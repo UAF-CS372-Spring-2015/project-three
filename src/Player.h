@@ -7,6 +7,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Entity.h"
+#include "Coin.h"
 #include <memory> // for shared_ptr
 
 #define PLAYER_FACE_DOWN sf::IntRect(0, 0, 32, 32)
@@ -34,6 +35,10 @@ public:
 	sf::Vector2f getSpeed();
 	void setSpeed(double, double);
 	void updatePosition(const float);
+
+	sf::FloatRect getBoundingBox();
+	void collisionWithCoin(const Coin &);
+
 private:
 	unsigned int _lives;
 
@@ -41,6 +46,7 @@ private:
 	sf::Sprite _sprite;
 	sf::Texture _texture;
 	sf::Vector2f _speed;
+	sf::FloatRect _box;
 
 };
 
