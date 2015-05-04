@@ -15,6 +15,8 @@
 #include "Player.h"
 #include "Coin.h"
 #include "Room.h"
+#include "EmptyRoom.h"
+#include "CoinRoom.h"
 
 class Game
 {

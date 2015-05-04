@@ -13,9 +13,15 @@
 #include <map>
 #include <string>
 #include "commands/Command.h"
+#include "commands/NullCommand.h"
+#include "commands/ExitCommand.h"
+#include "commands/MovePlayerCommand.h"
+#include "commands/RebuildRoomCommand.h"
+#include "commands/PauseCommand.h"
+
 //#include "Game.h"
 
-class GameInputHandler : public Game
+class GameInputHandler
 {
 public:
   ~GameInputHandler() = default;

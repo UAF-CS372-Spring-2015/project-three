@@ -11,17 +11,20 @@
 //#include "Game.h"
 #include "Button.h"
 
-class Menu : public Game
+class Game;
+
+class Menu
 {
 public:
   ~Menu() = default;
-  Menu();
+  Menu(Game *game);
 
   void handleInput();
   void update(float deltaTime);
   void draw(float deltaTime);
 
 private:
+  Game *_game;
   std::vector<Button> _buttons;
 
 };

@@ -5,16 +5,16 @@
 // Menu.cpp
 
 #include "Menu.h"
-
+#include "Game.h"
 #include <memory> // for shared_ptr and make_shared
 #include <string>
 #include <iostream> // for testing with cout, endl
 #include <SFML/Graphics.hpp>
 
-Menu::Menu()
+Menu::Menu(Game *game):_game(game)
 {
-  float middleX = window()->getSize().x;
-  float middleY = window()->getSize().y;
+  float middleX = _game->window()->getSize().x;
+  float middleY = _game->window()->getSize().y;
 
   Button play("assets/play.png", sf::Vector2f(middleX/2,middleY/6));
   play.callBack = [](){ std::cout << "Play game!" << std::endl; };
@@ -29,11 +29,13 @@ void Menu::handleInput()
 {
   //sf::Event input;
 
+  auto mousePosition = sf::Mouse::getPosition(*_game->window().get());
+
   if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
   {
     for(auto button : _buttons)
     {
-      if(button.getBounds().contains(static_cast<sf::Vector2f>(sf::Mouse::getPosition(*window().get()))))
+      if(button.getBounds().contains(mousePosition.x, mousePosition.y))
       {
         button.callBack();
       }
@@ -48,5 +50,12 @@ void Menu::update(float deltaTime)
 
 void Menu::draw(float deltaTime)
 {
+  _game->window()->clear(sf::Color::Color(0,0,0));
 
+  for(auto button : _buttons)
+  {
+    button.draw(_game->window());
+  }
+
+  _game->window()->display();
 }

@@ -9,6 +9,8 @@
 
 #include "Command.h"
 
+class Game;
+
 class RebuildRoomCommand : public Command
 {
 public:

@@ -6,7 +6,8 @@
 
 #include "Game.h"
 
-Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_shared<Player>()), _currentRoom(), _gameInputHandler(), _isPaused(false)
+
+Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_shared<Player>()), _gameInputHandler(), _isPaused(false), _currentRoom()
 {
   std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
   _window->create(modes[0], "The Platformer");
@@ -40,7 +41,7 @@ void Game::run()
   sf::Clock frametime; // TODO: make this a global clock member for game?
   float deltaTime;
 
-  Menu menu;
+  Menu menu(this);
 
   while (isRunning())
   {
@@ -132,12 +133,5 @@ void Game::drawEntities(float deltaTime)
 
 void Game::drawMenu(float deltaTime)
 {
-  window()->clear(sf::Color::Color(0,0,0));
-
-  for(auto button : _buttons)
-  {
-    button.draw(window());
-  }
-
-  window()->display();
+  drawMenu(deltaTime);
 }

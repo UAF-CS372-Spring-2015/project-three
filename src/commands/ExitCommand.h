@@ -9,6 +9,8 @@
 
 #include "Command.h"
 
+class Game;
+
 class ExitCommand : public Command
 {
 public:

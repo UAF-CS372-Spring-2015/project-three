@@ -5,6 +5,7 @@
 // PauseCommand.cpp
 
 #include "PauseCommand.h"
+#include "../Game.h"
 
 PauseCommand::PauseCommand(Game *game)
 {

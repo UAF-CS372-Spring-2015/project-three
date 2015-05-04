@@ -5,6 +5,7 @@
 // MovePlayerCommand.cpp
 
 #include "MovePlayerCommand.h"
+#include "../Player.h"
 
 MovePlayerCommand::MovePlayerCommand(Player *player): _player(player)
 {

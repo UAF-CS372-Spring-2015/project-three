@@ -9,6 +9,8 @@
 
 #include "Command.h"
 
+class Player;
+
 class MovePlayerCommand : public Command
 {
 public:
