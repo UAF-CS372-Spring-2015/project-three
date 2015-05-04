@@ -28,11 +28,10 @@ public:
 	sf::Vector2f getPosition();
 	void setPosition(double, double);
   sf::FloatRect getGlobalBounds();
-  bool collides(std::shared_ptr<Entity>);
   void update(const float &dt);
-  // virtual void collisionNotify(Entity *) override;
-  void notifyOfCollision(std::weak_ptr<Entity>, std::weak_ptr<Entity>);
 
+  bool collides(std::shared_ptr<Entity>);
+  void notifyOfCollision(std::weak_ptr<Entity>, std::weak_ptr<Entity>);
   void checkForCollisions();
 
   void setSize(double, double);

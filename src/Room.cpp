@@ -152,7 +152,3 @@ void Room::notifyOfCollision(std::weak_ptr<Entity> entity1, std::weak_ptr<Entity
   if (first && second)
     first->handleCollision(this, second.get());
 }
-
-// void Room::collisionNotify(Entity *)
-// {
-// }
