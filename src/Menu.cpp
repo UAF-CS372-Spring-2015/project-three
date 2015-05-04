@@ -27,11 +27,12 @@ Menu::Menu(Game *game):_game(game)
 
 void Menu::handleInput()
 {
-  //sf::Event input;
+  sf::Event input;
+  _game->window()->pollEvent(input);
 
   auto mousePosition = sf::Mouse::getPosition(*_game->window().get());
 
-  if(sf::Mouse::isButtonReleased(sf::Mouse::Left))
+  if (input.type == sf::Event::MouseButtonReleased)
   {
     for(auto button : _buttons)
     {
