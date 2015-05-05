@@ -11,10 +11,13 @@
 
 CoinRoom::CoinRoom(): Room()
 {
+
 }
 
 void CoinRoom::generateContent()
 {
+  initializeShape();
+  
   auto roomSize = getSize();
 
   std::shared_ptr<Coin> coin;

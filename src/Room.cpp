@@ -9,51 +9,63 @@
 #include <memory>
 #include <iostream>
 
-Room::Room(): _shape(), _entities()
+Room::Room(): _walls(), _background(), _entities()
 {
-  initializeShape();
 }
 
 void Room::draw(std::shared_ptr<sf::RenderWindow> window)
 {
+  window->draw(_background);
+
   for(auto entity:_entities)
     entity->draw(window);
 
-  window->draw(_shape);
+  window->draw(_walls);
 }
 
 sf::Vector2f Room::getPosition()
 {
-  return _shape.getPosition();
+  return _walls.getPosition();
 }
 
 sf::Vector2f Room::getCenter()
 {
-  auto bounds = _shape.getGlobalBounds();
+  auto bounds = _walls.getGlobalBounds();
   return sf::Vector2f(bounds.width / 2, bounds.height / 2);
 }
 
 void Room::setPosition(double x, double y)
 {
-  _shape.setPosition(x, y);
+  _walls.setPosition(x, y);
+  _background.setPosition(x, y);
 }
 
 void Room::setSize(double width, double height)
 {
-  _shape.setSize(sf::Vector2f(width, height));
-  // _shape.setOrigin(x/2, y/2);
+  _walls.setSize(sf::Vector2f(width, height));
+  _background.setSize(sf::Vector2f(width, height));
+  // _walls.setOrigin(x/2, y/2);
 }
 
 sf::Vector2f Room::getSize()
 {
-  return _shape.getSize();
+  return _walls.getSize();
 }
 
 void Room::initializeShape()
 {
-  _shape.setOutlineThickness(-_wallThickness);
-  _shape.setOutlineColor(sf::Color(255, 255, 255));
-  _shape.setFillColor(sf::Color(0,0,0,0));
+  _walls.setOutlineThickness(-_wallThickness);
+  _walls.setOutlineColor(sf::Color(255, 255, 255));
+  _walls.setFillColor(sf::Color(0,0,0,0.0));
+  // _background.setFillColor(sf::Color(38,83,38,255));
+
+  if (!_texture.loadFromFile("assets/grass.png"))
+	{
+    	std::cout << "Error loading texture" << std::endl;
+	}
+  _texture.setRepeated(true);
+  _background.setTexture(&_texture);
+  _background.setTextureRect(sf::IntRect(0,0,getSize().x,getSize().y));
 }
 
 bool Room::spawn(std::shared_ptr<Entity> entity, sf::Vector2f location)
@@ -97,7 +109,7 @@ sf::Vector2f Room::getRandomPosition()
 
 sf::FloatRect Room::getGlobalBounds()
 {
-  return _shape.getGlobalBounds();
+  return _walls.getGlobalBounds();
 }
 
 bool Room::collides(std::shared_ptr<Entity> entity)
