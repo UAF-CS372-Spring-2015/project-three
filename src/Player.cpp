@@ -11,7 +11,7 @@
 
 #include <iostream> // for cout and endl
 
-Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _speed(0.f,0.f), _previousPosition()
+Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _speed(0.f,0.f), _previousPosition(), _coinsCollected(0)
 {
 	if (!_texture.loadFromFile("assets/mini_morphea_sprite_sheet_by_nyaneoneko-d5brzm5.png"))
 	{
@@ -131,6 +131,7 @@ void Player::handleCollision(Room *room)
 void Player::handleCollision(Room *room, Coin *coin)
 {
 	room->despawn(coin);
+	room->updateDisplay(++_coinsCollected);
 }
 
 void Player::handleCollision(Room *room, RoomWall *wall)
