@@ -62,7 +62,8 @@ void Room::initializeShape(GameTextures *manager)
     	std::cout << "Error loading texture" << std::endl;
 	}
   _texture.setRepeated(true);
-  _background.setTexture(&_texture);
+  _background.setScale(4.f, 4.f);
+  _background.setTexture(manager->getTexture("grass", 55, 14).get());
   _background.setTextureRect(sf::IntRect(0,0,getSize().x,getSize().y));
 }
 

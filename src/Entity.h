@@ -9,7 +9,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <memory> // for shared_ptr and make_shared
-
+#include "GameTextures.h"
 class Room;
 class Coin;
 class Player;
@@ -29,6 +29,8 @@ public:
 	virtual void handleCollision(Room *, Coin *);
 	virtual void handleCollision(Room *, Player *);
 	virtual void handleCollision(Room *, RoomWall *);
+	virtual void setTexture(GameTextures *) = 0;
+
 private:
 };
 

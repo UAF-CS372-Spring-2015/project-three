@@ -31,6 +31,7 @@ public:
 	virtual void handleCollision(Room *, Entity *) override;
 	virtual void handleCollision(Room *, Coin *) override;
 	virtual void handleCollision(Room *, RoomWall *) override;
+	virtual void setTexture(GameTextures *) override;
 
 	void faceLeft();
 	void faceRight();

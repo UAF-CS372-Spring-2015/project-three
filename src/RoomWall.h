@@ -18,8 +18,7 @@ public:
   virtual void update(const float &dt) override;
   virtual bool collides(std::shared_ptr<Entity>) override;
   virtual void handleCollision(Room *, Entity *) override;
-
-  void setTexture(GameTextures *);
+  virtual void setTexture(GameTextures *) override;
 
   void setSize(double, double);
   sf::Vector2f getSize();
