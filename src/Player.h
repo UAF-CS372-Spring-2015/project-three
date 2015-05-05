@@ -28,7 +28,9 @@ public:
 	virtual bool collides(std::shared_ptr<Entity>) override;
 	virtual void update(const float &) override;
 	virtual void handleCollision(Room *) override;
+	virtual void handleCollision(Room *, Entity *) override;
 	virtual void handleCollision(Room *, Coin *) override;
+	virtual void handleCollision(Room *, RoomWall *) override;
 
 	void faceLeft();
 	void faceRight();

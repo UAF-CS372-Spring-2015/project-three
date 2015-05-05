@@ -52,3 +52,8 @@ void Coin::update(const float &dt)
 {
 
 }
+
+void Coin::handleCollision(Room *room, Entity *entity)
+{
+	entity->handleCollision(room, this);
+}

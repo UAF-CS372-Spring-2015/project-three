@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Room.h"
 #include "Coin.h"
+#include "RoomWall.h"
 
 #include <iostream> // for cout and endl
 
@@ -86,7 +87,7 @@ sf::Vector2f Player::getPosition()
 
 void Player::setPosition(double x, double y)
 {
-	_previousPosition = getPosition();
+	_previousPosition = _sprite.getPosition();
 	_sprite.setPosition(x, y);
 }
 
@@ -130,4 +131,15 @@ void Player::handleCollision(Room *room)
 void Player::handleCollision(Room *room, Coin *coin)
 {
 	room->despawn(coin);
+}
+
+void Player::handleCollision(Room *room, RoomWall *wall)
+{
+	_sprite.setPosition(_previousPosition.x, _previousPosition.y);
+	setSpeed(0,0);
+}
+
+void Player::handleCollision(Room *room, Entity *entity)
+{
+	entity->handleCollision(room, this);
 }

@@ -8,6 +8,7 @@
 #include "Room.h"
 #include "Coin.h"
 #include "Player.h"
+#include "RoomWall.h"
 #include <iostream>
 
 // Default implementations for collisions
@@ -21,14 +22,15 @@ void Entity::handleCollision(Room *room, Coin *coin)
 {
 }
 
-void Entity::handleCollision(Room *room, Player *coin)
+void Entity::handleCollision(Room *room, Player *player)
+{
+}
+
+void Entity::handleCollision(Room *room, RoomWall *wall)
 {
 }
 
 void Entity::handleCollision(Room *room, Entity *entity)
 {
-  if (Coin* e = dynamic_cast<Coin*>(entity))
-    handleCollision(room, e);
-  if (Player* e = dynamic_cast<Player*>(entity))
-    handleCollision(room, e);
+  // entity->handleCollision(room, this);
 }

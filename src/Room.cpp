@@ -6,12 +6,13 @@
 
 #include "Room.h"
 #include "Entity.h"
+#include "RoomWall.h"
 
 #include <random>
 #include <memory>
 #include <iostream>
 
-Room::Room(): _walls(), _background(), _entities()
+Room::Room(): _walls(), _background(), _entities(), _size()
 {
 }
 
@@ -22,44 +23,35 @@ void Room::draw(std::shared_ptr<sf::RenderWindow> window)
   for(auto entity:_entities)
     entity->draw(window);
 
-  window->draw(_walls);
-}
-
-sf::Vector2f Room::getPosition()
-{
-  return _walls.getPosition();
-}
-
-sf::Vector2f Room::getCenter()
-{
-  auto bounds = _walls.getGlobalBounds();
-  return sf::Vector2f(bounds.width / 2, bounds.height / 2);
-}
-
-void Room::setPosition(double x, double y)
-{
-  _walls.setPosition(x, y);
-  _background.setPosition(x, y);
 }
 
 void Room::setSize(double width, double height)
 {
-  _walls.setSize(sf::Vector2f(width, height));
+  _size.x = width;
+  _size.y = height;
   _background.setSize(sf::Vector2f(width, height));
-  // _walls.setOrigin(x/2, y/2);
 }
 
 sf::Vector2f Room::getSize()
 {
-  return _walls.getSize();
+  return _size;
+}
+
+sf::Vector2f Room::getCenter()
+{
+  return sf::Vector2f(_size.x/2, _size.y/2);
 }
 
 void Room::initializeShape()
 {
-  _walls.setOutlineThickness(-_wallThickness);
-  _walls.setOutlineColor(sf::Color(255, 255, 255));
-  _walls.setFillColor(sf::Color(0,0,0,0.0));
-  // _background.setFillColor(sf::Color(38,83,38,255));
+  auto topWall = std::make_shared<RoomWall>(_size.x-50, 50);
+  spawn(topWall, sf::Vector2f(0,0));
+  auto rightWall = std::make_shared<RoomWall>(50, _size.y);
+  spawn(rightWall, sf::Vector2f(_size.x-50,0));
+  auto leftWall = std::make_shared<RoomWall>(50, _size.y);
+  spawn(leftWall, sf::Vector2f(0,50));
+  auto bottomWall = std::make_shared<RoomWall>(_size.x - 100, 50);
+  spawn(bottomWall, sf::Vector2f(50,_size.y-50));
 
   if (!_texture.loadFromFile("assets/grass.png"))
 	{
@@ -75,8 +67,6 @@ bool Room::spawn(std::shared_ptr<Entity> entity, sf::Vector2f location)
   auto collided = false;
 
   entity->setPosition(location.x, location.y);
-
-  collided = collides(entity);
 
   for(auto spawned_entity:_entities)
     if (spawned_entity->collides(entity))
@@ -109,21 +99,6 @@ sf::Vector2f Room::getRandomPosition()
   return sf::Vector2f(randx(rd), randy(rd));
 }
 
-sf::FloatRect Room::getGlobalBounds()
-{
-  return _walls.getGlobalBounds();
-}
-
-bool Room::collides(std::shared_ptr<Entity> entity)
-{
-  auto bounds = entity->getGlobalBounds();
-  auto currentBounds = getGlobalBounds();
-  auto contains = currentBounds.contains(bounds.left-_wallThickness, bounds.top-_wallThickness);
-  contains = contains && currentBounds.contains(bounds.left + bounds.width + _wallThickness, bounds.top + bounds.height + _wallThickness);
-
-  return !contains;
-}
-
 void Room::update(const float &dt)
 {
   for(auto entity:_entities)
@@ -139,10 +114,6 @@ void Room::checkForCollisions()
 
   for(auto entity:_entities)
   {
-    //check for collision with room
-    if (collides(entity))
-      entity->handleCollision(this);
-
     //create a list of things that had collisions and handle them at the end
     //using weak pointers incase one of the items should be deleted as part of
     //the collision (user picks up a coin)

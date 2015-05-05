@@ -6,6 +6,7 @@
 
 #include "CoinRoom.h"
 #include "Coin.h"
+#include "RoomWall.h"
 #include <memory>
 
 CoinRoom::CoinRoom(): Room()
@@ -16,23 +17,24 @@ CoinRoom::CoinRoom(): Room()
 void CoinRoom::generateContent()
 {
   initializeShape();
-  
+
   auto roomSize = getSize();
+
   std::shared_ptr<Coin> coin;
 
   for(auto ii=0; ii < 10; ++ii)
   {
-    auto pos = getRandomPosition();
-    if (pos.x < 100)
-      pos.x = 100;
-    if (pos.x > roomSize.x - 100)
-      pos.x = roomSize.x - 100;
-    if (pos.y < 100)
-      pos.y = 100;
-    if (pos.y > roomSize.y - 100)
-      pos.y = roomSize.y - 100;
+    auto coinPosition = getRandomPosition();
+    if (coinPosition.x < 100)
+      coinPosition.x = 100;
+    if (coinPosition.x > roomSize.x - 100)
+      coinPosition.x = roomSize.x - 100;
+    if (coinPosition.y < 100)
+      coinPosition.y = 100;
+    if (coinPosition.y > roomSize.y - 100)
+      coinPosition.y = roomSize.y - 100;
 
     coin = std::make_shared<Coin>();
-    spawn(coin, pos);
+    spawn(coin, coinPosition);
   }
 }
