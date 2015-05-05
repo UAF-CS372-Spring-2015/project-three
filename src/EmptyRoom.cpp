@@ -12,4 +12,5 @@ EmptyRoom::EmptyRoom(): Room()
 
 void EmptyRoom::generateContent()
 {
+  initializeShape();
 }

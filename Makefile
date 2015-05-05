@@ -13,8 +13,6 @@ GAMESOURCES=src/Game.cpp \
 			src/commands/PauseCommand.cpp \
 			src/Menu.cpp \
 			src/Button.cpp \
-			src/Screen.cpp \
-			src/State.cpp \
 			src/Entity.cpp \
 			src/Player.cpp \
 			src/Coin.cpp \

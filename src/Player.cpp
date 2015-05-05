@@ -5,9 +5,12 @@
 // Player.cpp
 
 #include "Player.h"
+#include "Room.h"
+#include "Coin.h"
+
 #include <iostream> // for cout and endl
 
-Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _speed(0.f,0.f)
+Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _speed(0.f,0.f), _previousPosition()
 {
 	if (!_texture.loadFromFile("assets/mini_morphea_sprite_sheet_by_nyaneoneko-d5brzm5.png"))
 	{
@@ -15,7 +18,8 @@ Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _
 	}
 	// _texture.setSmooth(true);
 	_sprite.setTexture(_texture);
-	_sprite.setOrigin(sf::Vector2f(16, 16));
+	_sprite.setTextureRect(_facing);
+	// _sprite.setOrigin(sf::Vector2f(16, 16));
 	_sprite.setScale(sf::Vector2f(4.f, 4.f));
 }
 
@@ -25,11 +29,9 @@ unsigned int Player::getLives(){
 
 }
 
-void Player::draw(std::shared_ptr<sf::RenderWindow> window, const float dt) {
+void Player::draw(std::shared_ptr<sf::RenderWindow> window) {
 	_sprite.setTextureRect(_facing);
-	updatePosition(dt);
 	window->draw(_sprite);
-
 }
 
 void Player::faceLeft()
@@ -84,6 +86,7 @@ sf::Vector2f Player::getPosition()
 
 void Player::setPosition(double x, double y)
 {
+	_previousPosition = getPosition();
 	_sprite.setPosition(x, y);
 }
 
@@ -98,7 +101,7 @@ void Player::setSpeed(double x, double y)
 	_speed.y = y;
 }
 
-void Player::updatePosition(const float dt)
+void Player::update(const float &dt)
 {
 	auto pos = getPosition();
 
@@ -106,4 +109,25 @@ void Player::updatePosition(const float dt)
 	pos.y += getSpeed().y * dt;
 
 	setPosition(pos.x, pos.y);
+}
+
+sf::FloatRect Player::getGlobalBounds()
+{
+	return _sprite.getGlobalBounds();
+}
+
+bool Player::collides(std::shared_ptr<Entity> entity)
+{
+	return getGlobalBounds().intersects(entity->getGlobalBounds());
+}
+
+void Player::handleCollision(Room *room)
+{
+	setPosition(_previousPosition.x, _previousPosition.y);
+	setSpeed(0,0);
+}
+
+void Player::handleCollision(Room *room, Coin *coin)
+{
+	room->despawn(coin);
 }

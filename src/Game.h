@@ -36,11 +36,11 @@ public:
   void initializeCommands(); // TODO: Do we need this? There will only be so omany commands.
   void handleEvents(); // TODO: Differentiate between events and input?
 
-  void drawEntities(float deltaTime);
+  void drawEntities();
   void drawMenu(float deltaTime);
 
   void buildRoom();
-  
+
 private:
   std::shared_ptr<sf::RenderWindow> _window;
   std::shared_ptr<Player> _player;

@@ -28,6 +28,12 @@
 #
 
 guard :shell, :all_after_pass => false, :all_on_start => false do
-  watch(/(.*)\.(h|cpp)/)   {|m| puts "Running make...."; `make` }
+  watch(/(.*)\.(h|cpp)/) do |m|
+    if m[2] == 'h'
+      `rm #{m[1]}.o`
+    end
+    puts "Running make....";
+    `make`
+  end
   watch('Makefile') {|m| puts "Running make...."; `make` }
 end

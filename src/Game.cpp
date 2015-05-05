@@ -19,13 +19,12 @@ Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_s
 void Game::buildRoom()
 {
   auto size = window()->getSize();
-  auto center = window()->getView().getCenter();
 
   _currentRoom = std::make_shared<CoinRoom>();
   _currentRoom->setSize(size.x, size.y);
-  _currentRoom->setPosition(center.x, center.y);
-  _currentRoom->generateContent();
+  _currentRoom->setPosition(0,0);
   _currentRoom->spawn(_player, _currentRoom->getCenter());
+  _currentRoom->generateContent();
 }
 
 std::shared_ptr<sf::RenderWindow> Game::window()
@@ -56,7 +55,8 @@ void Game::run()
       }
 
       handleEvents();
-      drawEntities(deltaTime);
+      _currentRoom->update(deltaTime);
+      drawEntities();
   }
 
   exit();
@@ -122,11 +122,11 @@ void Game::handleEvents()
   }
 }
 
-void Game::drawEntities(float deltaTime)
+void Game::drawEntities()
 {
   window()->clear(sf::Color::Color(128,128,128));
 
-  _currentRoom->draw(window(), deltaTime);
+  _currentRoom->draw(window());
 
   window()->display();
 }
