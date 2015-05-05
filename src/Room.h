@@ -43,7 +43,6 @@ public:
 
   void initializeShape();
 
-protected:
   sf::Vector2f getRandomPosition();
 
 private:

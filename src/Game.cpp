@@ -5,7 +5,7 @@
 // Game.cpp
 
 #include "Game.h"
-
+#include "RandomWall.h"
 
 Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_shared<Player>()), _isPaused(false), _gameInputHandler(), _currentRoom(), _menu(this)
 {
@@ -19,12 +19,15 @@ Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_s
 void Game::buildRoom()
 {
   auto size = window()->getSize();
+  auto randomWalls = RandomWalls();
 
   _currentRoom = std::make_shared<CoinRoom>();
   _currentRoom->setSize(size.x, size.y);
   // _currentRoom->setPosition(0,0);
   _currentRoom->spawn(_player, _currentRoom->getCenter());
   _currentRoom->generateContent();
+  for(auto ii=0; ii<10; ++ii)
+    randomWalls.generateContent(_currentRoom.get());
 }
 
 std::shared_ptr<sf::RenderWindow> Game::window()
