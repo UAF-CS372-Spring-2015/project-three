@@ -2,18 +2,18 @@
 // The Platformer
 // Noah Betzen, William Fisher, Jacob McKenna
 // Dylan Tucker, William Showalter, Saira Walia, Adam Walters
-// ExitCommand.cpp
+// PauseCommand.cpp
 
+#include "PauseCommand.h"
 #include "../Game.h"
-#include "ExitCommand.h"
 
-ExitCommand::ExitCommand(Game *game)
+PauseCommand::PauseCommand(Game *game)
 {
   _game = game;
 }
 
-void ExitCommand::execute(bool pressed, const sf::Event &event)
+void PauseCommand::execute(bool pressed, const sf::Event &event)
 {
   if (pressed)
-    _game->exit();
+    _game->pauseGame();
 }

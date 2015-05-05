@@ -7,6 +7,8 @@
 #include "Room.h"
 #include "Entity.h"
 #include "RoomWall.h"
+
+#include <random>
 #include <memory>
 #include <iostream>
 

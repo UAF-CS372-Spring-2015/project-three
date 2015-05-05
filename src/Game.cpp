@@ -6,7 +6,8 @@
 
 #include "Game.h"
 
-Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_shared<Player>()), _currentRoom(), _gameInputHandler()
+
+Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_shared<Player>()), _isPaused(false), _gameInputHandler(), _currentRoom()
 {
   std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
   _window->create(modes[0], "The Platformer");
@@ -36,15 +37,25 @@ void Game::run()
   initializeCommands();
 
   // keep track of the frametime
-  sf::Clock frametime;
+  sf::Clock frametime; // TODO: make this a global clock member for game?
+  float deltaTime;
+
+  Menu menu(this);
 
   while (isRunning())
   {
       // get delta time for frame-rate depended movement
-      float dt = frametime.restart().asSeconds();
+      deltaTime = frametime.restart().asSeconds();
+      
+      while(isPaused())
+      {
+        deltaTime = frametime.restart().asSeconds();
+        menu.draw(deltaTime);
+        menu.handleInput();
+      }
 
       handleEvents();
-      _currentRoom->update(dt);
+      _currentRoom->update(deltaTime);
       drawEntities();
   }
 
@@ -56,6 +67,16 @@ bool Game::isRunning()
   return window()->isOpen();
 }
 
+void Game::pauseGame()
+{
+  _isPaused = !_isPaused;
+}
+
+bool Game::isPaused()
+{
+  return _isPaused;
+}
+
 void Game::exit()
 {
   window()->close();
@@ -64,8 +85,9 @@ void Game::exit()
 void Game::initializeCommands()
 {
   _gameInputHandler.setExitCommand(std::make_shared<ExitCommand>(this));
-  _gameInputHandler.setMoveCommand(std::make_shared<MovePlayerCommand>(_player.get()));
+  _gameInputHandler.setMoveCommand(std::make_shared<MovePlayerCommand>(_player.get())); // get() extracts value of shared pointer
   _gameInputHandler.setRebuildRoomCommand(std::make_shared<RebuildRoomCommand>(this));
+  _gameInputHandler.setPauseCommand(std::make_shared<PauseCommand>(this)); // why this pointer?
 }
 
 void Game::handleEvents()
@@ -107,4 +129,9 @@ void Game::drawEntities()
   _currentRoom->draw(window());
 
   window()->display();
+}
+
+void Game::drawMenu(float deltaTime)
+{
+  drawMenu(deltaTime);
 }

@@ -4,8 +4,9 @@
 // Dylan Tucker, William Showalter, Saira Walia, Adam Walters
 // GameInputHandler.h
 
-#ifndef GAME_INPUT_HANDLER
-#define GAME_INPUT_HANDLER
+#ifndef GAME_INPUT_HANDLER_H
+#define GAME_INPUT_HANDLER_H
+
 
 #include <SFML/Window/Keyboard.hpp>
 #include <memory>
@@ -16,20 +17,23 @@
 #include "commands/ExitCommand.h"
 #include "commands/MovePlayerCommand.h"
 #include "commands/RebuildRoomCommand.h"
+#include "commands/PauseCommand.h"
 
-class Game;
+//#include "Game.h"
 
 class GameInputHandler
 {
 public:
-  GameInputHandler(): _commands(), _null(std::make_shared<NullCommand>()) {}
-  std::shared_ptr<Command> handleInput(const sf::Event &);
-  void setExitCommand(std::shared_ptr<Command>);
-  void setMoveCommand(std::shared_ptr<Command>);
-  void setRebuildRoomCommand(std::shared_ptr<Command>);
+  ~GameInputHandler() = default;
+  GameInputHandler();
+  std::shared_ptr<Command> handleInput(const sf::Event &event);
+  void setExitCommand(std::shared_ptr<Command> command);
+  void setMoveCommand(std::shared_ptr<Command> command);
+  void setRebuildRoomCommand(std::shared_ptr<Command> command );
+  void setPauseCommand(std::shared_ptr<Command> command);
 
   void addCommand(sf::Keyboard::Key, std::shared_ptr<Command>);
-public:
+public: // TODO: this should be private?
   std::map<sf::Keyboard::Key, std::shared_ptr<Command>> _commands;
   std::shared_ptr<Command> _null;
 };

@@ -10,13 +10,12 @@
 #include "RoomWall.h"
 
 #include <iostream> // for cout and endl
-#include <memory> // for shared_ptr and make_shared
 
 Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _speed(0.f,0.f), _previousPosition()
 {
 	if (!_texture.loadFromFile("assets/mini_morphea_sprite_sheet_by_nyaneoneko-d5brzm5.png"))
 	{
-    	std::cout << "Error loading texture" << std::endl;
+    	std::cout << "Error loading texture." << std::endl;
 	}
 	// _texture.setSmooth(true);
 	_sprite.setTexture(_texture);

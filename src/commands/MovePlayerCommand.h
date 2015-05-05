@@ -15,7 +15,7 @@ class MovePlayerCommand : public Command
 {
 public:
   MovePlayerCommand(Player *);
-  virtual void execute(bool, const sf::Event &event) override;
+  virtual void execute(bool pressed, const sf::Event &event) override;
 private:
   Player *_player; // TODO: We probably want a unique pointer here
 };

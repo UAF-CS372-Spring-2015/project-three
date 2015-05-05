@@ -10,8 +10,6 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <vector>
-#include <string>
-#include <random>
 
 // class Entity;
 #include "Entity.h"
