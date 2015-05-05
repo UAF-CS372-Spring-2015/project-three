@@ -8,6 +8,8 @@
 #define MENU_H
 
 #include <vector>
+#include <memory>
+
 //#include "Game.h"
 #include "Button.h"
 
@@ -25,7 +27,7 @@ public:
 
 private:
   Game *_game;
-  std::vector<Button> _buttons;
+  std::vector<std::shared_ptr<Button>> _buttons;
 
 };
 
