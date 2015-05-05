@@ -21,7 +21,7 @@ Player::Player():_lives(3), _facing(PLAYER_FACE_RIGHT), _sprite(), _texture(), _
 	_sprite.setTexture(_texture);
 	_sprite.setTextureRect(_facing);
 	// _sprite.setOrigin(sf::Vector2f(16, 16));
-	_sprite.setScale(sf::Vector2f(4.f, 4.f));
+	_sprite.setScale(sf::Vector2f(2.f, 2.f));
 }
 
 unsigned int Player::getLives(){

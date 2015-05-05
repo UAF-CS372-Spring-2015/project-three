@@ -17,7 +17,7 @@ Coin::Coin(): _sprite(), _texture() {
 
 void Coin::draw(std::shared_ptr<sf::RenderWindow> window){
 	_sprite.setTexture(_texture);
-	_sprite.setScale(1.5f, 1.5f);
+	//_sprite.setScale(1.5f, 1.5f);
 	window->draw(_sprite);
 
 }
