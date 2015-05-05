@@ -68,3 +68,5 @@ Player sprite: http://nyaneoneko.deviantart.com/art/Mini-Morphea-Sprite-Sheet-32
 
 Some rights reserved. This work is licensed under a
 [Creative Commons Attribution-Noncommercial-No Derivative Works 3.0 License](http://creativecommons.org/licenses/by-nc-nd/3.0/).
+
+Other tile: http://opengameart.org/content/dungeon-crawl-32x32-tiles
