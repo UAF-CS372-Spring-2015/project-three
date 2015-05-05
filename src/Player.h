@@ -47,13 +47,12 @@ public:
 	void setSpeed(double, double);
 private:
 	unsigned int _lives;
-	unsigned int _coinsCollected;
 	sf::IntRect _facing;
 	sf::Sprite _sprite;
 	sf::Texture _texture;
 	sf::Vector2f _speed;
 	sf::Vector2f _previousPosition;
-
+	unsigned int _coinsCollected;
 };
 
 #endif
