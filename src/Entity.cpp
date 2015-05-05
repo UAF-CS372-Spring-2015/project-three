@@ -30,6 +30,7 @@ void Entity::handleCollision(Room *room, RoomWall *wall)
 {
 }
 
+// You will need to implement a "double dispatch" method in each entity to pass in the 
 void Entity::handleCollision(Room *room, Entity *entity)
 {
   // entity->handleCollision(room, this);

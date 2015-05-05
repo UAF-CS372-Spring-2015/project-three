@@ -14,7 +14,7 @@ class CoinRoom : public Room
 public:
   CoinRoom();
   ~CoinRoom() = default;
-  virtual void generateContent() override;
+  virtual void generateContent(GameTextures *) override;
 };
 
 #endif

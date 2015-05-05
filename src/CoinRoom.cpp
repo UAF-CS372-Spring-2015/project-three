@@ -14,9 +14,9 @@ CoinRoom::CoinRoom(): Room()
 
 }
 
-void CoinRoom::generateContent()
+void CoinRoom::generateContent(GameTextures *manager)
 {
-  initializeShape();
+  initializeShape(manager);
 
   auto roomSize = getSize();
 

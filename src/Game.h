@@ -48,7 +48,8 @@ private:
   bool _isPaused;
 
   GameInputHandler _gameInputHandler;
-
+  GameTextures _gameTextures;
+  
   std::shared_ptr<Room> _currentRoom;
 
   std::vector<Coin> _coins; // TODO: Room should keep track of its coins, not the game

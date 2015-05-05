@@ -10,7 +10,7 @@ EmptyRoom::EmptyRoom(): Room()
 {
 }
 
-void EmptyRoom::generateContent()
+void EmptyRoom::generateContent(GameTextures *manager)
 {
-  initializeShape();
+  initializeShape(manager);
 }

@@ -42,15 +42,19 @@ sf::Vector2f Room::getCenter()
   return sf::Vector2f(_size.x/2, _size.y/2);
 }
 
-void Room::initializeShape()
+void Room::initializeShape(GameTextures *manager)
 {
   auto topWall = std::make_shared<RoomWall>(_size.x-50, 50);
+  topWall->setTexture(manager);
   spawn(topWall, sf::Vector2f(0,0));
   auto rightWall = std::make_shared<RoomWall>(50, _size.y);
+  rightWall->setTexture(manager);
   spawn(rightWall, sf::Vector2f(_size.x-50,0));
   auto leftWall = std::make_shared<RoomWall>(50, _size.y);
+  leftWall->setTexture(manager);
   spawn(leftWall, sf::Vector2f(0,50));
   auto bottomWall = std::make_shared<RoomWall>(_size.x - 100, 50);
+  bottomWall->setTexture(manager);
   spawn(bottomWall, sf::Vector2f(50,_size.y-50));
 
   if (!_texture.loadFromFile("assets/grass.png"))

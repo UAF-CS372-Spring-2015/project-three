@@ -25,9 +25,9 @@ void Game::buildRoom()
   _currentRoom->setSize(size.x, size.y);
   // _currentRoom->setPosition(0,0);
   _currentRoom->spawn(_player, _currentRoom->getCenter());
-  _currentRoom->generateContent();
+  _currentRoom->generateContent(&_gameTextures);
   for(auto ii=0; ii<10; ++ii)
-    randomWalls.generateContent(_currentRoom.get());
+    randomWalls.generateContent(_currentRoom.get(), &_gameTextures);
 }
 
 std::shared_ptr<sf::RenderWindow> Game::window()
