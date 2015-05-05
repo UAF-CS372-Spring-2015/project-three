@@ -144,3 +144,8 @@ void Player::handleCollision(Room *room, Entity *entity)
 {
 	entity->handleCollision(room, this);
 }
+
+void Player::setTexture(GameTextures *manager)
+{
+
+}

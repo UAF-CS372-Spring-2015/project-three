@@ -13,6 +13,7 @@
 #include "Display.h"
 // class Entity;
 #include "Entity.h"
+#include "GameTextures.h"
 
 
 class Room
@@ -21,7 +22,7 @@ public:
   Room();
 
   //Need to implement for room
-  virtual void generateContent() = 0;
+  virtual void generateContent(GameTextures *) = 0;
 
   //Implement entity methods
   void draw(std::shared_ptr<sf::RenderWindow>);
@@ -42,7 +43,7 @@ public:
   void despawn(std::shared_ptr<Entity>);
   void despawn(Entity *);
 
-  void initializeShape();
+  void initializeShape(GameTextures *);
   void updateDisplay(unsigned int);
 
   sf::Vector2f getRandomPosition();
@@ -51,7 +52,6 @@ private:
   sf::RectangleShape _walls;
   sf::RectangleShape _background;
   sf::Texture _texture;
-
   std::vector<std::shared_ptr<Entity>> _entities;
   double _wallThickness = 20;
   sf::Vector2f _size;

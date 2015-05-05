@@ -14,7 +14,7 @@ class RandomWalls
 {
 public:
   RandomWalls() = default;
-  void generateContent(Room *);
+  void generateContent(Room *, GameTextures *);
 };
 
 #endif

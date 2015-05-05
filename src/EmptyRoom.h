@@ -13,7 +13,7 @@ class EmptyRoom : public Room
 {
 public:
   EmptyRoom();
-  virtual void generateContent() override;
+  virtual void generateContent(GameTextures *) override;
 };
 
 #endif

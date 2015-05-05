@@ -2,6 +2,7 @@
 #define __THEPLATFORMER_ROOM_WALLS_H__
 
 #include "Entity.h"
+#include "GameTextures.h"
 
 class RoomWall : public Entity
 {
@@ -17,6 +18,7 @@ public:
   virtual void update(const float &dt) override;
   virtual bool collides(std::shared_ptr<Entity>) override;
   virtual void handleCollision(Room *, Entity *) override;
+  virtual void setTexture(GameTextures *) override;
 
   void setSize(double, double);
   sf::Vector2f getSize();
@@ -24,8 +26,7 @@ public:
 
 private:
   sf::RectangleShape _walls;
-  sf::Texture _texture;
-  double _wallThickness = 20;
+  std::shared_ptr<sf::Texture> _texture;
 };
 
 #endif

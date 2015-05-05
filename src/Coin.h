@@ -21,6 +21,7 @@ public:
 	virtual bool collides(std::shared_ptr<Entity>) override;
 	virtual void update(const float &) override;
 	virtual void handleCollision(Room *, Entity *) override;
+	virtual void setTexture(GameTextures *) override;
 
 private:
 	sf::Sprite _sprite;

@@ -12,12 +12,14 @@ RoomWall::RoomWall(double width, double height): _walls(sf::Vector2f(width, heig
 
 void RoomWall::initializeShape()
 {
-  _walls.setOutlineColor(sf::Color(255, 255, 255));
-  _walls.setFillColor(sf::Color(255, 255, 255));
+  // _walls.setOutlineColor(sf::Color(255, 255, 255));
+  // _walls.setFillColor(sf::Color(255, 255, 255));
 }
 
 void RoomWall::draw(std::shared_ptr<sf::RenderWindow> window)
 {
+  _walls.setTexture(_texture.get());
+  _walls.setTextureRect(sf::IntRect(0, 0, getSize().x, getSize().y));
   window->draw(_walls);
 }
 
@@ -58,4 +60,9 @@ sf::FloatRect RoomWall::getGlobalBounds()
 void RoomWall::handleCollision(Room *room, Entity *entity)
 {
 	entity->handleCollision(room, this);
+}
+
+void RoomWall::setTexture(GameTextures *manager)
+{
+  _texture = manager->getTexture("wall", 9, 16);
 }

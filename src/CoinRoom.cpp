@@ -14,9 +14,9 @@ CoinRoom::CoinRoom(): Room()
 
 }
 
-void CoinRoom::generateContent()
+void CoinRoom::generateContent(GameTextures *manager)
 {
-  initializeShape();
+  initializeShape(manager);
 
   auto roomSize = getSize();
 
@@ -35,6 +35,7 @@ void CoinRoom::generateContent()
       coinPosition.y = roomSize.y - 100;
 
     coin = std::make_shared<Coin>();
+    coin->setTexture(manager);
     spawn(coin, coinPosition);
   }
 }

@@ -13,15 +13,11 @@ Coin::Coin(): _sprite(), _texture() {
 	{
     	std::cout << "Error loading texture." << std::endl;
 	}
-	// _texture.setSmooth(true);
-	_sprite.setTexture(_texture);
-	_sprite.setOrigin(sf::Vector2f(7.5f, 7.5f));
-	_sprite.setScale(sf::Vector2f(1.5f, 1.5f));
-	_sprite.setPosition(400,400);
 }
 
 void Coin::draw(std::shared_ptr<sf::RenderWindow> window){
-
+	_sprite.setTexture(_texture);
+	_sprite.setScale(1.5f, 1.5f);
 	window->draw(_sprite);
 
 }
@@ -56,4 +52,9 @@ void Coin::update(const float &dt)
 void Coin::handleCollision(Room *room, Entity *entity)
 {
 	entity->handleCollision(room, this);
+}
+
+void Coin::setTexture(GameTextures *manager)
+{
+	_texture = *manager->getTexture("coin", 21, 20).get();
 }
