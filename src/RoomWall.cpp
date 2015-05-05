@@ -54,3 +54,8 @@ sf::FloatRect RoomWall::getGlobalBounds()
 {
   return _walls.getGlobalBounds();
 }
+
+void RoomWall::handleCollision(Room *room, Entity *entity)
+{
+	entity->handleCollision(room, this);
+}

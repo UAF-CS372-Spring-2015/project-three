@@ -24,7 +24,7 @@ public:
 	virtual sf::FloatRect getGlobalBounds() = 0;
 	virtual bool collides(std::shared_ptr<Entity>) = 0;
 	virtual void update(const float &dt) = 0;
-	virtual void handleCollision(Room *, Entity *);
+	virtual void handleCollision(Room *, Entity *) = 0;
 	virtual void handleCollision(Room *);
 	virtual void handleCollision(Room *, Coin *);
 	virtual void handleCollision(Room *, Player *);

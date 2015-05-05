@@ -136,6 +136,11 @@ void Player::handleCollision(Room *room, Coin *coin)
 
 void Player::handleCollision(Room *room, RoomWall *wall)
 {
-	setPosition(_previousPosition.x, _previousPosition.y);
+	_sprite.setPosition(_previousPosition.x, _previousPosition.y);
 	setSpeed(0,0);
+}
+
+void Player::handleCollision(Room *room, Entity *entity)
+{
+	entity->handleCollision(room, this);
 }

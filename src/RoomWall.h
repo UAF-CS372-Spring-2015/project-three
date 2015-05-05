@@ -16,11 +16,12 @@ public:
   virtual sf::FloatRect getGlobalBounds() override;
   virtual void update(const float &dt) override;
   virtual bool collides(std::shared_ptr<Entity>) override;
+  virtual void handleCollision(Room *, Entity *) override;
 
   void setSize(double, double);
   sf::Vector2f getSize();
   void initializeShape();
-  
+
 private:
   sf::RectangleShape _walls;
   sf::Texture _texture;
