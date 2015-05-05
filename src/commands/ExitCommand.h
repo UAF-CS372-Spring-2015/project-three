@@ -14,10 +14,10 @@ class Game;
 class ExitCommand : public Command
 {
 public:
-  ExitCommand(Game *);
-  virtual void execute(bool, const sf::Event &) override;
+  ExitCommand(Game *game);
+  virtual void execute(bool pressed, const sf::Event &event) override;
 private:
-  Game *_game; // TODO: Probably shoudl be a unique pointer
+  Game *_game; // TODO: Probably should be a unique pointer
 };
 
 #endif

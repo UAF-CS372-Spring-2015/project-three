@@ -5,6 +5,11 @@
 // GameInputHandler.cpp
 
 #include "GameInputHandler.h"
+#include "commands/NullCommand.h"
+
+GameInputHandler::GameInputHandler():_null(std::make_shared<NullCommand>())
+{
+}
 
 void GameInputHandler::setExitCommand(std::shared_ptr<Command> command)
 {
@@ -26,6 +31,11 @@ void GameInputHandler::setMoveCommand(std::shared_ptr<Command> command)
 void GameInputHandler::setRebuildRoomCommand(std::shared_ptr<Command> command)
 {
   addCommand(sf::Keyboard::Space, command);
+}
+
+void GameInputHandler::setPauseCommand(std::shared_ptr<Command> command)
+{
+  addCommand(sf::Keyboard::P, command);
 }
 
 void GameInputHandler::addCommand(sf::Keyboard::Key name, std::shared_ptr<Command> command)

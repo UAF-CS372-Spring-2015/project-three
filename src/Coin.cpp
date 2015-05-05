@@ -5,14 +5,13 @@
 // Coin.cpp
 
 #include "Coin.h"
-#include <memory>
 #include <iostream>
 
 Coin::Coin(): _sprite(), _texture() {
 
 	if (!_texture.loadFromFile("assets/Coin1.png"))
 	{
-    std::cout << "Error loading texture" << std::endl;
+    	std::cout << "Error loading texture." << std::endl;
 	}
 	// _texture.setSmooth(true);
 	_sprite.setTexture(_texture);

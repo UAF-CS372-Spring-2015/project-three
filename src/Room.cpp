@@ -6,6 +6,8 @@
 
 #include "Room.h"
 #include "Entity.h"
+
+#include <random>
 #include <memory>
 #include <iostream>
 

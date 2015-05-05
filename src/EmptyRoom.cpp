@@ -5,7 +5,6 @@
 // EmptyRoom.cpp
 
 #include "EmptyRoom.h"
-#include <iostream>
 
 EmptyRoom::EmptyRoom(): Room()
 {
