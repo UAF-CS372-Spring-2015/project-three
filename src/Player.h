@@ -47,6 +47,7 @@ public:
 	void setSpeed(double, double);
 private:
 	unsigned int _lives;
+	unsigned int _coinsCollected;
 	sf::IntRect _facing;
 	sf::Sprite _sprite;
 	sf::Texture _texture;

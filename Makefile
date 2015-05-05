@@ -21,7 +21,8 @@ GAMESOURCES=src/Game.cpp \
 			src/CoinRoom.cpp \
 			src/RoomWall.cpp \
 			src/RandomWall.cpp \
-			src/GameTextures.cpp
+			src/GameTextures.cpp \
+			src/Display.cpp
 
 MAINSOURCES=src/main.cpp \
 			$(GAMESOURCES)
