@@ -47,13 +47,12 @@ private:
 
   bool _isPaused;
 
-  std::shared_ptr<Menu> _menu;
-
   GameInputHandler _gameInputHandler;
 
   std::shared_ptr<Room> _currentRoom;
 
   std::vector<Coin> _coins; // TODO: Room should keep track of its coins, not the game
+  Menu _menu;
 };
 
 #endif

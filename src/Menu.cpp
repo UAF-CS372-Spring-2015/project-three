@@ -13,23 +13,27 @@
 
 Menu::Menu(Game *game):_game(game)
 {
+}
+
+void Menu::setup()
+{
   float middleX = _game->window()->getSize().x;
   float middleY = _game->window()->getSize().y;
 
   std::shared_ptr<Button> play = std::make_shared<Button>("assets/play.png", sf::Vector2f(middleX/2,middleY/6));
   play->callBack = [](Game *game){ std::cout << "Play game!" << std::endl; game->pauseGame();};
   _buttons.push_back(play);
-  
+
   std::shared_ptr<Button> quit = std::make_shared<Button>("assets/quit.png", sf::Vector2f(middleX/2,middleY/3));
-  quit->callBack = [](Game *game){ std::cout << "Quit game!" << std::endl; exit(0);};
+  quit->callBack = [](Game *game){ std::cout << "Quit game!" << std::endl; game->exit();};
   _buttons.push_back(quit);
 }
 
-void Menu::handleInput()
+void Menu::handleInput(sf::Event input)
 {
-  sf::Event input;
-  _game->window()->pollEvent(input);
-
+  // sf::Event input;
+  // _game->window()->pollEvent(input);
+  //
   auto mousePosition = sf::Mouse::getPosition(*_game->window().get());
 
   if (input.type == sf::Event::MouseButtonReleased)

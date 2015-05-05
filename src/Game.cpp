@@ -7,12 +7,12 @@
 #include "Game.h"
 
 
-Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_shared<Player>()), _isPaused(false), _gameInputHandler(), _currentRoom()
+Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_shared<Player>()), _isPaused(false), _gameInputHandler(), _currentRoom(), _menu(this)
 {
   std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
   _window->create(modes[0], "The Platformer");
   _window->setFramerateLimit(60);
-
+  _menu.setup();
   buildRoom();
 }
 
@@ -40,23 +40,24 @@ void Game::run()
   sf::Clock frametime; // TODO: make this a global clock member for game?
   float deltaTime;
 
-  Menu menu(this);
+  // Menu menu(this);
 
   while (isRunning())
   {
       // get delta time for frame-rate depended movement
       deltaTime = frametime.restart().asSeconds();
-      
-      while(isPaused())
-      {
-        deltaTime = frametime.restart().asSeconds();
-        menu.draw(deltaTime);
-        menu.handleInput();
-      }
-
       handleEvents();
-      _currentRoom->update(deltaTime);
-      drawEntities();
+
+      if(isPaused())
+      {
+        _menu.draw(deltaTime);
+        // _menu.handleInput();
+      }
+      else
+      {
+        _currentRoom->update(deltaTime);
+        drawEntities();
+      }
   }
 
   exit();
@@ -100,6 +101,13 @@ void Game::handleEvents()
       case sf::Event::Closed:
       {
         exit();
+        break;
+      }
+      case sf::Event::MouseButtonReleased:
+      {
+        if (isPaused())
+          _menu.handleInput(event);
+
         break;
       }
       case sf::Event::KeyPressed:

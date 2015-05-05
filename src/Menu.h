@@ -21,9 +21,10 @@ public:
   ~Menu() = default;
   Menu(Game *game);
 
-  void handleInput();
+  void handleInput(sf::Event);
   void update(float deltaTime);
   void draw(float deltaTime);
+  void setup();
 
 private:
   Game *_game;
