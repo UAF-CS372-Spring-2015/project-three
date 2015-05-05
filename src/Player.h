@@ -44,6 +44,7 @@ public:
 
 	sf::Vector2f getSpeed();
 	void setSpeed(double, double);
+	unsigned int getCoins();
 private:
 	unsigned int _lives;
 	unsigned int _coinsCollected;

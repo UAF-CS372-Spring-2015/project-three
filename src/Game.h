@@ -29,6 +29,7 @@ public:
   bool isRunning();
 
   void pauseGame();
+  void restartGame();
   bool isPaused(); // for implementing menus
 
   void exit(); // TODO: Rename endGame()?

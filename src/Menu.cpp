@@ -27,6 +27,11 @@ void Menu::setup()
   std::shared_ptr<Button> quit = std::make_shared<Button>("assets/quit.png", sf::Vector2f(middleX/2,middleY/3));
   quit->callBack = [](Game *game){ std::cout << "Quit game!" << std::endl; game->exit();};
   _buttons.push_back(quit);
+
+  std::shared_ptr<Button> win = std::make_shared<Button>("assets/You_Win.png", sf::Vector2f(middleX/2,middleY/2));
+  quit->callBack = [](Game *game){ std::cout << "Quit game!" << std::endl; game->exit();};
+  _buttons.push_back(win);
+
 }
 
 void Menu::handleInput(sf::Event input)
@@ -64,3 +69,16 @@ void Menu::draw(float deltaTime)
 
   _game->window()->display();
 }
+
+void Menu::gameOver() {
+
+  _game->window()->clear(sf::Color::Color(128,128,128));
+
+  _buttons[2]->draw(_game->window());
+
+  _game->window()->display();
+  
+}
+
+
+

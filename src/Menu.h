@@ -24,6 +24,7 @@ public:
   void handleInput(sf::Event);
   void update(float deltaTime);
   void draw(float deltaTime);
+  void gameOver();
   void setup();
 
 private:

@@ -13,12 +13,6 @@ void Display::draw(std::shared_ptr<sf::RenderWindow> window) {
 
 }
 
-void Display::updateInfo() {
-
-
-
-}
-
 void Display::setup(unsigned int coins) {
 
 	if (!_font.loadFromFile("assets/Arial.ttf"))

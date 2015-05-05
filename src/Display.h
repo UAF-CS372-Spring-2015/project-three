@@ -9,7 +9,6 @@ public:
 
 	Display();
 	void draw(std::shared_ptr<sf::RenderWindow> window);
-	void updateInfo();
 	void setup(unsigned int);
 
 

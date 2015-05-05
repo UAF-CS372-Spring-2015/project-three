@@ -7,6 +7,8 @@
 #include "Game.h"
 #include "RandomWall.h"
 
+const int TEN_COINS_TO_WIN = 10;
+
 Game::Game(): _window(std::make_shared<sf::RenderWindow>()), _player(std::make_shared<Player>()), _isPaused(false), _gameInputHandler(), _currentRoom(), _menu(this)
 {
   std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
@@ -56,6 +58,10 @@ void Game::run()
         _menu.draw(deltaTime);
         // _menu.handleInput();
       }
+      else if (_player->getCoins() == TEN_COINS_TO_WIN){
+        _menu.gameOver();
+
+      }
       else
       {
         _currentRoom->update(deltaTime);
@@ -74,6 +80,12 @@ bool Game::isRunning()
 void Game::pauseGame()
 {
   _isPaused = !_isPaused;
+}
+
+void Game::restartGame() {
+
+  //_currentRoom->RebuildRoomCommand();
+
 }
 
 bool Game::isPaused()

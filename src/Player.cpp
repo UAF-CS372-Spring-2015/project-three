@@ -144,3 +144,12 @@ void Player::handleCollision(Room *room, Entity *entity)
 {
 	entity->handleCollision(room, this);
 }
+
+unsigned int Player::getCoins() {
+
+	return _coinsCollected;
+
+}
+
+
+
