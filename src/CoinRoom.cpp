@@ -17,7 +17,7 @@ CoinRoom::CoinRoom(): Room()
 void CoinRoom::generateContent()
 {
   initializeShape();
-  
+
   auto roomSize = getSize();
 
   std::shared_ptr<Coin> coin;
@@ -37,9 +37,4 @@ void CoinRoom::generateContent()
     coin = std::make_shared<Coin>();
     spawn(coin, coinPosition);
   }
-
-  auto wallPosition = getRandomPosition();
-  auto wall = std::make_shared<RoomWall>(200, 50);
-  spawn(wall, wallPosition);
-
 }

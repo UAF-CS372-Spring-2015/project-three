@@ -16,7 +16,7 @@
 // class Entity;
 #include "Entity.h"
 
-class Room : public Entity
+class Room
 {
 public:
   Room();
@@ -25,13 +25,13 @@ public:
   virtual void generateContent() = 0;
 
   //Implement entity methods
-  virtual void draw(std::shared_ptr<sf::RenderWindow>) override;
-	virtual sf::Vector2f getPosition() override;
-	virtual void setPosition(double, double) override;
-  virtual sf::FloatRect getGlobalBounds() override;
-  virtual void update(const float &dt) override;
-
-  virtual bool collides(std::shared_ptr<Entity>) override;
+  void draw(std::shared_ptr<sf::RenderWindow>);
+	sf::Vector2f getPosition();
+	void setPosition(double, double);
+  // virtual sf::FloatRect getGlobalBounds() override;
+  void update(const float &dt);
+  //
+  // virtual bool collides(std::shared_ptr<Entity>) override;
 
   void notifyOfCollision(std::weak_ptr<Entity>, std::weak_ptr<Entity>);
   void checkForCollisions();
@@ -55,6 +55,7 @@ private:
 
   std::vector<std::shared_ptr<Entity>> _entities;
   double _wallThickness = 20;
+  sf::Vector2f _size;
 
 };
 
