@@ -20,7 +20,8 @@ GAMESOURCES=src/Game.cpp \
 			src/EmptyRoom.cpp \
 			src/CoinRoom.cpp \
 			src/RoomWall.cpp \
-			src/RandomWall.cpp
+			src/RandomWall.cpp \
+			src/Display.cpp
 
 MAINSOURCES=src/main.cpp \
 			$(GAMESOURCES)

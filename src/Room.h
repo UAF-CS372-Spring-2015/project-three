@@ -10,9 +10,10 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <vector>
-
+#include "Display.h"
 // class Entity;
 #include "Entity.h"
+
 
 class Room
 {
@@ -42,6 +43,7 @@ public:
   void despawn(Entity *);
 
   void initializeShape();
+  void updateDisplay(unsigned int);
 
   sf::Vector2f getRandomPosition();
 
@@ -53,7 +55,7 @@ private:
   std::vector<std::shared_ptr<Entity>> _entities;
   double _wallThickness = 20;
   sf::Vector2f _size;
-
+  std::shared_ptr<Display> _display;
 };
 
 #endif

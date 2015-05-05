@@ -7,6 +7,7 @@
 #include "Room.h"
 #include "Entity.h"
 #include "RoomWall.h"
+#include "Display.h"
 
 #include <random>
 #include <memory>
@@ -14,6 +15,7 @@
 
 Room::Room(): _walls(), _background(), _entities(), _size()
 {
+    _display = std::make_shared<Display>();
 }
 
 void Room::draw(std::shared_ptr<sf::RenderWindow> window)
@@ -23,6 +25,8 @@ void Room::draw(std::shared_ptr<sf::RenderWindow> window)
   for(auto entity:_entities)
     entity->draw(window);
 
+  _display->draw(window);
+  
 }
 
 void Room::setSize(double width, double height)
@@ -44,6 +48,7 @@ sf::Vector2f Room::getCenter()
 
 void Room::initializeShape()
 {
+
   auto topWall = std::make_shared<RoomWall>(_size.x-50, 50);
   spawn(topWall, sf::Vector2f(0,0));
   auto rightWall = std::make_shared<RoomWall>(50, _size.y);
@@ -54,12 +59,15 @@ void Room::initializeShape()
   spawn(bottomWall, sf::Vector2f(50,_size.y-50));
 
   if (!_texture.loadFromFile("assets/grass.png"))
-	{
-    	std::cout << "Error loading texture" << std::endl;
-	}
+  {
+      std::cout << "Error loading texture" << std::endl;
+  }
+
   _texture.setRepeated(true);
   _background.setTexture(&_texture);
   _background.setTextureRect(sf::IntRect(0,0,getSize().x,getSize().y));
+
+
 }
 
 bool Room::spawn(std::shared_ptr<Entity> entity, sf::Vector2f location)
@@ -137,3 +145,10 @@ void Room::notifyOfCollision(std::weak_ptr<Entity> entity1, std::weak_ptr<Entity
   if (first && second)
     first->handleCollision(this, second.get());
 }
+
+void Room::updateDisplay(unsigned int coins){
+
+  _display->setup(coins);
+
+}
+
